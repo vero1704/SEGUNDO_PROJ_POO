@@ -1,3 +1,5 @@
+package Entidades;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,9 +10,7 @@
  *
  * @author Veronica Quesada
  */
-public class Empresa {
-    String nombreE;
-    int telefono;
-    String ubicacion;
-    
+public class Recursos {
+    String tipo;
+    int cantidad;
 }

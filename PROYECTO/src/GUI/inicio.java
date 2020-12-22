@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mvc.vista;
+package GUI;
 
 /**
  *
@@ -119,13 +119,21 @@ public class inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPantallaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPantallaPrincipalActionPerformed
-        // TODO add your handling code here:
+        Menu ventana = new Menu(this,true);
+        ventana.pack();
+        setVisible(false);
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnPantallaPrincipalActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+       RegistrarEmpresa ventana = new RegistrarEmpresa(this, true);
+        ventana.pack();
+        setVisible(false);
+        ventana.setVisible(true);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    
+   
     /**
      * @param args the command line arguments
      */

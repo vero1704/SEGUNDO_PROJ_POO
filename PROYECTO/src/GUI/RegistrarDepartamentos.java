@@ -3,23 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mvc.vista;
+package GUI;
 
-import static com.sun.glass.ui.Cursor.setVisible;
+import Entidades.Departamento;
+import Entidades.Persona;
+import Negocios.Metodos;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author ma210
  */
-public class RegistrarEmpresa extends javax.swing.JFrame {
+public class RegistrarDepartamentos extends javax.swing.JFrame {
+    
+    Metodos procesos = new Metodos();
 
     /**
-     * Creates new form RegistrarEmpresa
+     * Creates new form RegistrarDepartamentos
      */
-    public RegistrarEmpresa() {
+    public RegistrarDepartamentos(java.awt.Frame parent, boolean modal) {
         initComponents();
+        cargarPersona();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,59 +36,35 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtNombreEmpres = new javax.swing.JTextField();
-        txtTelefonoEmpresa = new javax.swing.JTextField();
-        txtUbicsacionEmpresa = new javax.swing.JTextField();
+        txtNombreDepart1 = new javax.swing.JTextField();
+        cmbEncargadoDep1 = new javax.swing.JComboBox<>();
         btnRegistrar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
 
-        jLabel2.setText("jLabel2");
-
-        jLabel3.setText("jLabel3");
-
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
-        jButton1.setText("jButton1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(java.awt.Color.white);
+        setName("Registrar Departamento"); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 12));
-        jLabel1.setText("Registrar Empresa");
+        jLabel1.setText("Registrar Departamento");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/editar32.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/editar32.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Nombre empresa");
+        jLabel5.setText("Nombre Departamento");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel6.setText("Teléfono empresa");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Ubicación empresa");
-
-        txtUbicsacionEmpresa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUbicsacionEmpresaActionPerformed(evt);
-            }
-        });
+        jLabel6.setText("Encargado Depart.");
 
         btnRegistrar.setBackground(new java.awt.Color(102, 153, 255));
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/disquete.png"))); // NOI18N
-        btnRegistrar.setText("Guardar Empresa");
+        btnRegistrar.setText("Guardar Depart");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -103,72 +85,60 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addGap(83, 83, 83))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtUbicsacionEmpresa, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                                    .addComponent(txtTelefonoEmpresa)
-                                    .addComponent(txtNombreEmpres)))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbEncargadoDep1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNombreDepart1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
                         .addComponent(btnRegistrar)
                         .addGap(18, 18, 18)
                         .addComponent(btnSalir)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addGap(32, 32, 32)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtNombreEmpres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtTelefonoEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtUbicsacionEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                    .addComponent(txtNombreDepart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmbEncargadoDep1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnSalir))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtUbicsacionEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUbicsacionEmpresaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUbicsacionEmpresaActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        // TODO add your handling code here:
+       registrarDep();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-      
+        volverInicio();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
@@ -188,42 +158,78 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarDepartamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarDepartamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarDepartamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarEmpresa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistrarDepartamentos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistrarEmpresa().setVisible(true);
+          public void run() {
+                RegistrarDepartamentos dialog = new RegistrarDepartamentos(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
-        
-        
-        
-    }
 
+    }
+    
+      public void registrarDep() {
+          
+        String nombreDepto = txtNombreDepart1.getText();
+        String nombre = (String) cmbEncargadoDep1.getSelectedItem();
+      
+          Persona persona = new Persona(nombre);
+          
+          Departamento dept = new Departamento(nombreDepto, persona);
+          procesos.guardarDepto(dept);
+
+        }
+        
+        public void volverInicio(){
+         Menu ventana = new Menu(this,true);
+        ventana.pack();
+        setVisible(false);
+        ventana.setVisible(true);
+    }
+    
+         public void cargarPersona() {
+        try {
+            ArrayList<Persona> usuarios = procesos.mostrarPersonas();
+            if(usuarios.size() == 0){
+                    JOptionPane.showMessageDialog(rootPane,"Debe de registrar primero a una familia");
+                } 
+            
+            else{
+            for (Persona temp : usuarios) {  
+                cmbEncargadoDep1.addItem(temp.getNombre());
+                      
+            }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace(); 
+        }
+    }
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> cmbEncargadoDep1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField txtNombreEmpres;
-    private javax.swing.JTextField txtTelefonoEmpresa;
-    private javax.swing.JTextField txtUbicsacionEmpresa;
+    private javax.swing.JTextField txtNombreDepart1;
     // End of variables declaration//GEN-END:variables
 }
