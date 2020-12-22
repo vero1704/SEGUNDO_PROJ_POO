@@ -74,12 +74,13 @@ public class Dato {
      public void insertarDpto(Departamento dpto) {
         try (Connection connection = Conexion.getConexion()) {
             String sql = "INSERT INTO departamento(\n" +
-"	 nombredpto, encargado)\n" +
-"	VALUES ( ?, ?);";
+"	 nombredpto, encargado,empresa)\n" +
+"	VALUES ( ?, ?, ?);";
 
             PreparedStatement p = connection.prepareStatement(sql);
             p.setString(1,dpto.getNombreD());
             p.setString(2, dpto.persona.getNombre());
+            p.setString(0, dpto.empresa.getNombreE());
 
             int res = p.executeUpdate();
 
@@ -160,7 +161,7 @@ public class Dato {
             while (rs.next()) {
                 Persona customer = new Persona();
                 customer.setNombre(rs.getString("nombrepersona"));
-                customer.empresa.setNombreE(rs.getString("empresa"));
+                customer.setEmpresas(rs.getString("empresa"));
                 customer.setPuesto(rs.getString("puesto"));
                 customer.setSalario(rs.getInt("salario"));
                 informes.add(customer);
@@ -183,12 +184,61 @@ public class Dato {
             while (rs.next()) {
                 Departamento customer = new Departamento();
                 customer.setNombreD(rs.getString("nombredpto"));
-                customer.persona.setNombre(rs.getString("encargado"));
+                customer.setNombreP(rs.getString("encargado"));
                 informes.add(customer);
             }
         } catch (Exception e) {
             throw new RuntimeException("No se pudo establecer la conexión");
         }
         return informes;
+    }
+          
+          public ArrayList<Persona> mostrarIPersonasEspecificos(Empresa infoEmpresa) {
+              
+              ArrayList<Persona> personas = new ArrayList<>();
+              try (Connection connection = Conexion.getConexion()) {
+                  String sql = "select nombrepersona,puesto,empresa,salario from persona where empresa  = ? ";
+                  
+                  PreparedStatement p = connection.prepareStatement(sql);
+                  p.setString(1, infoEmpresa.getNombreE());
+                  
+                  ResultSet rs = p.executeQuery();
+                  while (rs.next()) {
+                      Persona customer = new Persona();
+                      customer.setNombre(rs.getString("nombrepersona"));
+                      customer.setPuesto(rs.getString("puesto"));
+                      customer.setEmpresas(rs.getString("empresa"));
+                      customer.setSalario(rs.getInt("salario"));
+                      personas.add(customer);
+                  }
+              } catch (Exception e) {
+                  throw new RuntimeException("No se pudo establecer la conexión");
+              }
+              
+              return personas;
+    }
+          
+           public ArrayList<Departamento> mostrarDptoEspecificos(Empresa infoEmpresa) {
+              
+              ArrayList<Departamento> dptos = new ArrayList<>();
+              try (Connection connection = Conexion.getConexion()) {
+                  String sql = "select nombredpto,encargado,empresa from departamento where empresa  = ? ";
+                  
+                  PreparedStatement p = connection.prepareStatement(sql);
+                  p.setString(1, infoEmpresa.getNombreE());
+                  
+                  ResultSet rs = p.executeQuery();
+                  while (rs.next()) {
+                      Departamento customer = new Departamento();
+                      customer.setNombreD(rs.getString("nombredpto"));
+                      customer.setNombreP(rs.getString("encargado"));
+                      customer.setEmpresas(rs.getString("empresa"));
+                      dptos.add(customer);
+                  }
+              } catch (Exception e) {
+                  throw new RuntimeException("No se pudo establecer la conexión");
+              }
+              
+              return dptos;
     }
 }

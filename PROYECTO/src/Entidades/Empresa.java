@@ -14,6 +14,7 @@ public class Empresa {
     String nombreE;
     int telefono;
     String ubicacion;
+    
 
     public Empresa() {
     }

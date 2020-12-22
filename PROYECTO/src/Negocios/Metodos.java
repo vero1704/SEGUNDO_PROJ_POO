@@ -31,8 +31,7 @@ public class Metodos {
     }
     
       public void guardarDepto(Departamento dpto) {
-        
-        udatos.insertarDpto(dpto);
+      udatos.insertarDpto(dpto);
    
     }
       
@@ -43,17 +42,23 @@ public class Metodos {
     }
        
         public ArrayList<Persona> mostrarPersonas() {
-        return udatos.mostrarPersonas();
+            return udatos.mostrarPersonas();
     }
             
     public ArrayList<Persona> mostrarTodasPersona() {
-
         return udatos.mostrarTodasPersonas();
     }
     
     public ArrayList<Departamento> mostrarTodasDepart() {
-
         return udatos.cargasTodasDpto();
+    }
+    
+    public ArrayList<Persona> mostrarPersonaEspecifico(Empresa infoEmpresa) {
+        return udatos.mostrarIPersonasEspecificos(infoEmpresa);
+    }
+    
+    public ArrayList<Departamento> mostrarDptoEspecificos(Empresa infoEmpresa) {
+            return udatos.mostrarDptoEspecificos(infoEmpresa);
     }
 
 }

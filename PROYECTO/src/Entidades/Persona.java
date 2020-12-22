@@ -18,6 +18,7 @@ public class Persona {
     public int salario ;
     public String puesto;
     public Empresa empresa;
+    public String empresas;
     
     Departamento departamento;
     Proyectos proyectosAsig;
@@ -38,7 +39,11 @@ public class Persona {
         this.nombre = nombre;
     }
 
-
+    public void setEmpresas(String empresas) {
+        this.empresas = empresas;
+    }
+    
+    
      public String getNombre() {
         return nombre;
     }
@@ -69,6 +74,10 @@ public class Persona {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public String getEmpresas() {
+        return empresas;
     }
 
 

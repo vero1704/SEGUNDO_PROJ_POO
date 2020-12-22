@@ -55,6 +55,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         cmbEmpresas2 = new javax.swing.JComboBox<>();
         txtCon = new javax.swing.JLabel();
+        btnBuscarEmpresa = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaDepart = new javax.swing.JTable();
@@ -65,7 +66,8 @@ public class Menu extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        cmbEmpresas = new javax.swing.JComboBox<>();
+        cmbDeparta = new javax.swing.JComboBox<>();
+        btnBuscarDepartamento = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         cmbEmpresas1 = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -104,6 +106,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Personas registradas");
 
+        jButton1.setBackground(new java.awt.Color(102, 153, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/anadir.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +114,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 153, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/eliminar.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,10 +122,19 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(102, 153, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/boton-editar.png"))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("Seleccione el nombre de la empresa");
+
+        btnBuscarEmpresa.setBackground(new java.awt.Color(102, 153, 255));
+        btnBuscarEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search (1).png"))); // NOI18N
+        btnBuscarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarEmpresaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,7 +158,9 @@ public class Menu extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbEmpresas2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cmbEmpresas2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(276, 276, 276)
                         .addComponent(jLabel2)
@@ -175,13 +190,15 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(cmbEmpresas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel12)
+                                .addComponent(cmbEmpresas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnBuscarEmpresa))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addComponent(txtCon, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25))))
         );
@@ -190,13 +207,13 @@ public class Menu extends javax.swing.JFrame {
 
         tablaDepart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre Dpto.", "Encargado", "Empresa"
             }
         ));
         jScrollPane2.setViewportView(tablaDepart);
@@ -229,6 +246,14 @@ public class Menu extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Seleccione el nombre de la empresa");
 
+        btnBuscarDepartamento.setBackground(new java.awt.Color(102, 153, 255));
+        btnBuscarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search (1).png"))); // NOI18N
+        btnBuscarDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarDepartamentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -251,7 +276,9 @@ public class Menu extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbDeparta, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBuscarDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(257, 257, 257)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,10 +298,11 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
-                    .addComponent(cmbEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbDeparta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarDepartamento))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -286,7 +314,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)
                         .addComponent(jButton6)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         Departamento.addTab("Departamentos", jPanel2);
@@ -440,6 +468,46 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void btnBuscarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpresaActionPerformed
+         try {
+            String nombre = (String) cmbEmpresas2.getSelectedItem();
+            Empresa infoEmpresa = new Empresa();
+            infoEmpresa.setNombreE(nombre);
+
+            ArrayList<Persona> personas = procesos.mostrarPersonaEspecifico(infoEmpresa);
+            DefaultTableModel modelo = (DefaultTableModel) tablaPersona.getModel();
+            modelo.setRowCount(0);
+
+            for (Persona temp : personas) {
+                Object[] fila = {temp.getNombre(),temp.getEmpresas(), temp.getPuesto(),temp.getSalario()};
+                modelo.addRow(fila);
+            }
+
+        } catch (Exception e) {
+            txtCon.setText("No hay personas registradas");
+        }
+    }//GEN-LAST:event_btnBuscarEmpresaActionPerformed
+
+    private void btnBuscarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarDepartamentoActionPerformed
+      try {
+            String dep = (String) cmbDeparta.getSelectedItem();
+            Empresa infoDpto = new Empresa();
+            infoDpto.setNombreE(dep);
+
+            ArrayList<Departamento> dptos = procesos.mostrarDptoEspecificos(infoDpto);
+            DefaultTableModel modelo = (DefaultTableModel) tablaDepart.getModel();
+            modelo.setRowCount(0);
+
+            for (Departamento temp : dptos) {
+                Object[] fila = {temp.getNombreD(),temp.getNombreP()};
+                modelo.addRow(fila);
+            }
+
+        } catch (Exception e) {
+            txtCon.setText("No hay departamentos registrados");
+        }
+    }//GEN-LAST:event_btnBuscarDepartamentoActionPerformed
+
     
       public void cargarEmpresa() {
         try {
@@ -450,7 +518,7 @@ public class Menu extends javax.swing.JFrame {
             
             else{
             for (Empresa temp : usuarios) {  
-                cmbEmpresas.addItem(temp.getNombreE());
+                cmbDeparta.addItem(temp.getNombreE());
                 cmbEmpresas1.addItem(temp.getNombreE());
                 cmbEmpresas2.addItem(temp.getNombreE());              
             }
@@ -468,7 +536,7 @@ public class Menu extends javax.swing.JFrame {
             modelo.setRowCount(0);
 
             for (Persona temp : personas) {
-                Object[] fila = {temp.getNombre(),temp.empresa.getNombreE(), temp.getPuesto(),temp.getSalario()};
+                Object[] fila = {temp.getNombre(),temp.getEmpresas(), temp.getPuesto(),temp.getSalario()};
                 modelo.addRow(fila);
             }
 
@@ -485,7 +553,7 @@ public class Menu extends javax.swing.JFrame {
             modelo.setRowCount(0);
 
             for (Departamento temp : dpto) {
-                Object[] fila = {temp.getNombreD(),temp.persona.getNombre()};
+                Object[] fila = {temp.getNombreD(),temp.getNombreP()};
                 modelo.addRow(fila);
             }
 
@@ -540,7 +608,9 @@ public class Menu extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Departamento;
-    private javax.swing.JComboBox<String> cmbEmpresas;
+    private javax.swing.JButton btnBuscarDepartamento;
+    private javax.swing.JButton btnBuscarEmpresa;
+    private javax.swing.JComboBox<String> cmbDeparta;
     private javax.swing.JComboBox<String> cmbEmpresas1;
     private javax.swing.JComboBox<String> cmbEmpresas2;
     private javax.swing.JButton jButton1;
