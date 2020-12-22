@@ -16,6 +16,7 @@ import Entidades.Proyectos;
 public class Persona {
     public String nombre;
     public int salario ;
+    public int cedula;
     public String puesto;
     public Empresa empresa;
     public String empresas;
@@ -24,9 +25,10 @@ public class Persona {
     Proyectos proyectosAsig;
     Actividades tareasAsig;
 
-    public Persona(String nombre, int salario, String puesto, Empresa empresa) {
+    public Persona(String nombre, int salario, int cedula,String puesto, Empresa empresa) {
         this.nombre = nombre;
         this.salario = salario;
+        this.cedula = cedula;
         this.puesto = puesto;
         this.empresa = empresa;
     }
@@ -80,8 +82,14 @@ public class Persona {
         return empresas;
     }
 
+    public int getCedula() {
+        return cedula;
+    }
 
-    
-        
-    
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+
+   
 }

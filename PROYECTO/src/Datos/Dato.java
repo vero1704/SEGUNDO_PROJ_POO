@@ -101,14 +101,15 @@ public class Dato {
        public void insertarPersona(Persona personas) {
         try (Connection connection = Conexion.getConexion()) {
             String sql = "INSERT INTO public.persona(\n" +
-"	nombrepersona, puesto, empresa, salario)\n" +
-"	VALUES ( ?, ?, ?, ?);";
+"	nombrepersona, puesto, empresa, salario,ced)\n" +
+"	VALUES ( ?, ?, ?, ?, ?);";
 
             PreparedStatement p = connection.prepareStatement(sql);
             p.setString(1,personas.getNombre());
             p.setString(2, personas.getPuesto());
             p.setString(3, personas.empresa.getNombreE());
             p.setInt(4, personas.getSalario());
+            p.setInt(5, personas.getCedula());
 
             int res = p.executeUpdate();
 
@@ -153,13 +154,14 @@ public class Dato {
         ArrayList<Persona> informes = new ArrayList<>();
 
         try (Connection connection = Conexion.getConexion()) {
-            String sql = "select nombrepersona,empresa,puesto,salario from persona";
+            String sql = "select ced,nombrepersona,empresa,puesto,salario from persona";
 
             Statement s = connection.createStatement();
             ResultSet rs = s.executeQuery(sql);
 
             while (rs.next()) {
                 Persona customer = new Persona();
+                 customer.setCedula(rs.getInt("ced"));
                 customer.setNombre(rs.getString("nombrepersona"));
                 customer.setEmpresas(rs.getString("empresa"));
                 customer.setPuesto(rs.getString("puesto"));
@@ -241,4 +243,56 @@ public class Dato {
               
               return dptos;
     }
+           public ArrayList<Persona> mostrarCedulas() {
+
+        ArrayList<Persona> ids = new ArrayList<>();
+
+        try (Connection connection = Conexion.getConexion()) {
+            String sql = "select ced from persona";
+
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+
+            while (rs.next()) {
+                Persona customer = new Persona();
+                customer.setCedula(rs.getInt("ced"));
+                ids.add(customer);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("No se pudo establecer la conexión");
+        }
+        return ids;
+    }
+           
+           public void editarPersona(Persona personas) {
+        try (Connection connection = Conexion.getConexion()) {
+            String sql = "UPDATE persona\n" +
+"	SET nombrepersona=?, puesto=?, empresa=?, salario=?\n" +
+"	WHERE ced=?;";
+
+            PreparedStatement p = connection.prepareStatement(sql);
+            p.setString(1, personas.getNombre());
+            p.setString(2, personas.getPuesto());
+            p.setString(3, personas.empresa.getNombreE());
+            p.setInt(4, personas.getSalario());
+            p.setInt(5, personas.getCedula());
+            
+            int res = p.executeUpdate();
+
+            if (res == 1) {
+                JOptionPane.showMessageDialog(null, "Se ha modificado "
+                        + "satisfactoriamente!", "INFORMACION",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Lo sentimos, modificacion fallida",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("No se pudo establecer la conexión");
+        }
+    }
+           
+           
 }

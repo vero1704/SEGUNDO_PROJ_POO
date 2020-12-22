@@ -36,9 +36,7 @@ public class Metodos {
     }
       
        public void guardarPersona(Persona personas) {
-        
-        udatos.insertarPersona(personas);
-   
+           udatos.insertarPersona(personas);
     }
        
         public ArrayList<Persona> mostrarPersonas() {
@@ -59,6 +57,14 @@ public class Metodos {
     
     public ArrayList<Departamento> mostrarDptoEspecificos(Empresa infoEmpresa) {
             return udatos.mostrarDptoEspecificos(infoEmpresa);
+    }
+    
+    public ArrayList<Persona> mostrarCedulas() {
+        return udatos.mostrarCedulas();
+    }
+    
+    public void editarPersonas(Persona personas) {
+        udatos.editarPersona(personas);
     }
 
 }

@@ -16,16 +16,17 @@ import javax.swing.JOptionPane;
  *
  * @author ma210
  */
-public class RegistrarPersona extends javax.swing.JFrame {
+public class EditarPersona extends javax.swing.JFrame {
     
     Metodos procesos = new Metodos();
 
     /**
      * Creates new form RegistrarDepartamentos
      */
-    public RegistrarPersona(java.awt.Frame parent, boolean modal) {
+    public EditarPersona(java.awt.Frame parent, boolean modal) {
         initComponents();
         cargarEmpresa();
+        cargarCedulas();
     }
 
     /**
@@ -50,7 +51,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
         txtPuesto = new javax.swing.JTextField();
         txtSalario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
+        cmbCedulas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(java.awt.Color.white);
@@ -58,9 +59,9 @@ public class RegistrarPersona extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 12));
-        jLabel1.setText("Registrar Persona");
+        jLabel1.setText("Editar Persona");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/editar32.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-editar (1).png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setText("Nombre ");
@@ -101,7 +102,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel7.setText("Cédula");
+        jLabel7.setText("Selecciona la cédula de los datos a editar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,12 +111,12 @@ public class RegistrarPersona extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(102, 102, 102)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnRegistrar)
@@ -126,29 +127,34 @@ public class RegistrarPersona extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
+                                    .addComponent(jLabel6))
                                 .addGap(48, 48, 48)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbEmpresa, 0, 166, Short.MAX_VALUE)
+                                    .addComponent(cmbEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtPuesto)
-                                    .addComponent(txtSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                                    .addComponent(txtNombrePersona)
-                                    .addComponent(txtCedula))))))
-                .addContainerGap(98, Short.MAX_VALUE))
+                                    .addComponent(txtSalario)
+                                    .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(48, 48, 48)
+                                    .addComponent(jLabel7))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(91, 91, 91)
+                                    .addComponent(cmbCedulas, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(cmbCedulas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,7 +174,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalir)
                     .addComponent(btnRegistrar))
-                .addContainerGap())
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
@@ -205,6 +211,26 @@ public class RegistrarPersona extends javax.swing.JFrame {
             e.printStackTrace(); 
         }
     }
+      
+      public void cargarCedulas() {
+        try {
+            ArrayList<Persona> usuarios = procesos.mostrarCedulas();
+            if(usuarios.size() == 0){
+                    JOptionPane.showMessageDialog(rootPane,"Debe de registrar primero una persona");
+                } 
+            
+            else{
+            for (Persona temp : usuarios) {  
+                String cedulas = String.valueOf(temp.getCedula());
+                cmbCedulas.addItem(cedulas);
+                      
+            }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace(); 
+        }
+    }
     
     
     /**
@@ -224,21 +250,23 @@ public class RegistrarPersona extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistrarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistrarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistrarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistrarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
           public void run() {
-                RegistrarPersona dialog = new RegistrarPersona(new javax.swing.JFrame(), true);
+                EditarPersona dialog = new EditarPersona(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -255,14 +283,14 @@ public class RegistrarPersona extends javax.swing.JFrame {
           
         String nombre = txtNombrePersona.getText();
         String puesto = txtPuesto.getText();
-        int cedula = Integer.parseInt(txtCedula.getText());
+        int cedula = Integer.parseInt((String) cmbCedulas.getSelectedItem());
         int salario = Integer.parseInt(txtSalario.getText());
         String empresa = (String) cmbEmpresa.getSelectedItem();
         
         Empresa empresas = new Empresa(empresa);
         
         Persona personas = new Persona(nombre, salario,cedula, puesto, empresas);
-        procesos.guardarPersona(personas);
+        procesos.editarPersonas(personas);
 
         }
         
@@ -276,6 +304,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> cmbCedulas;
     private javax.swing.JComboBox<String> cmbEmpresa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -284,7 +313,6 @@ public class RegistrarPersona extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtNombrePersona;
     private javax.swing.JTextField txtPuesto;
     private javax.swing.JTextField txtSalario;

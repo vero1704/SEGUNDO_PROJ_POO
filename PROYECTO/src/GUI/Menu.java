@@ -92,13 +92,13 @@ public class Menu extends javax.swing.JFrame {
 
         tablaPersona.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Empresa", "Puesto", "Salario"
+                "Cédula", "Nombre", "Empresa", "Puesto", "Salario"
             }
         ));
         jScrollPane1.setViewportView(tablaPersona);
@@ -124,6 +124,11 @@ public class Menu extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(102, 153, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/boton-editar.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("Seleccione el nombre de la empresa");
@@ -508,6 +513,13 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarDepartamentoActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        EditarPersona ventana = new EditarPersona(this, true);
+        ventana.pack();
+        setVisible(false);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     
       public void cargarEmpresa() {
         try {
@@ -536,7 +548,7 @@ public class Menu extends javax.swing.JFrame {
             modelo.setRowCount(0);
 
             for (Persona temp : personas) {
-                Object[] fila = {temp.getNombre(),temp.getEmpresas(), temp.getPuesto(),temp.getSalario()};
+                Object[] fila = {temp.getCedula(),temp.getNombre(),temp.getEmpresas(), temp.getPuesto(),temp.getSalario()};
                 modelo.addRow(fila);
             }
 
