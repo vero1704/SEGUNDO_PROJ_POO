@@ -25,7 +25,7 @@ public class RegistrarDepartamentos extends javax.swing.JFrame {
      */
     public RegistrarDepartamentos(java.awt.Frame parent, boolean modal) {
         initComponents();
-        cargarPersona();
+
         cargarEmpresa();
     }
 
@@ -88,39 +88,47 @@ public class RegistrarDepartamentos extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Empresa");
 
+        cmbEmpresa.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbEmpresaItemStateChanged(evt);
+            }
+        });
+        cmbEmpresa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEmpresaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbEncargadoDep1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNombreDepart1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbEncargadoDep1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtNombreDepart1, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(107, 107, 107)
-                                    .addComponent(cmbEmpresa, 0, 166, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(38, 38, 38)
-                                    .addComponent(btnRegistrar)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnSalir))))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(107, 107, 107)
+                        .addComponent(cmbEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistrar)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir)
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,23 +137,23 @@ public class RegistrarDepartamentos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtNombreDepart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
+                    .addComponent(cmbEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cmbEncargadoDep1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtNombreDepart1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnSalir))
-                .addGap(39, 39, 39))
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -158,6 +166,14 @@ public class RegistrarDepartamentos extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         volverInicio();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void cmbEmpresaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbEmpresaItemStateChanged
+       
+    }//GEN-LAST:event_cmbEmpresaItemStateChanged
+
+    private void cmbEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpresaActionPerformed
+        cargarPersona();
+    }//GEN-LAST:event_cmbEmpresaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,65 +218,74 @@ public class RegistrarDepartamentos extends javax.swing.JFrame {
 
     }
     
-      public void registrarDep() {
-          
-          String nombreDepto = txtNombreDepart1.getText();
-          String nombre = (String) cmbEncargadoDep1.getSelectedItem();
-          String empresas = (String) cmbEmpresa.getSelectedItem();
-      
-          Persona persona = new Persona(nombre);
-          Empresa empresa = new Empresa(empresas);
-          
-          Departamento dept = new Departamento(nombre, persona, empresa);
-          procesos.guardarDepto(dept);
+     public void registrarDep() {
 
+        String nombreDepto = txtNombreDepart1.getText();
+        String nombre = (String) cmbEncargadoDep1.getSelectedItem();
+        String empresas = (String) cmbEmpresa.getSelectedItem();
+
+        Persona persona = new Persona(nombre);
+        Empresa empresa = new Empresa(empresas);
+
+        Departamento dept = new Departamento(nombreDepto, persona, empresa);
+
+        ArrayList<Empresa> empre = procesos.empresaPersona(persona);
+        for (Empresa temp : empre) {
+            if (temp.getNombreE() == null) {
+                JOptionPane.showMessageDialog(rootPane, "Debe de buscar una empresa para trabajar");
+            } else if (temp.getNombreE().equals(empresas)) {
+                procesos.guardarDepto(dept);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Usted no es colaborador de la empresa");
+            }
         }
-        
-        public void volverInicio(){
-         Menu ventana = new Menu(this,true);
+
+    }
+
+    public void volverInicio() {
+        Menu ventana = new Menu(this, true);
         ventana.pack();
         setVisible(false);
         ventana.setVisible(true);
     }
-    
-         public void cargarPersona() {
+
+    public void cargarPersona() {
         try {
-            ArrayList<Persona> usuarios = procesos.mostrarPersonas();
-            if(usuarios.size() == 0){
-                    JOptionPane.showMessageDialog(rootPane,"Debe de registrar primero a una familia");
-                } 
+            String empresa = (String) cmbEmpresa.getSelectedItem();
+            Empresa infoEmpresa = new Empresa(empresa);
             
-            else{
-            for (Persona temp : usuarios) {  
-                cmbEncargadoDep1.addItem(temp.getNombre());
-                      
+            ArrayList<Persona> usuarios = procesos.mostrarPersonaEspecifico(infoEmpresa);
+            if (usuarios.size() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Debe de registrar primero a una persona");
+            } else {
+                for (Persona temp : usuarios) {
+                    cmbEncargadoDep1.addItem(temp.getNombre());
+
+                }
             }
-            }
-            
+
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
     }
-         
-            public void cargarEmpresa() {
+
+    public void cargarEmpresa() {
         try {
             ArrayList<Empresa> usuarios = procesos.mostrarEmpresas();
-            if(usuarios.size() == 0){
-                    JOptionPane.showMessageDialog(rootPane,"Debe de registrar primero a una familia");
-                } 
-            
-            else{
-            for (Empresa temp : usuarios) {  
-                cmbEmpresa.addItem(temp.getNombreE());
-                      
+            if (usuarios.size() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Debe de registrar primero una empresa");
+            } else {
+                for (Empresa temp : usuarios) {
+                    cmbEmpresa.addItem(temp.getNombreE());
+
+                }
             }
-            }
-            
+
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
     }
-        
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnSalir;
