@@ -14,18 +14,19 @@ import Entidades.Proyectos;
  * @author Veronica Quesada
  */
 public class Persona {
+
     public String nombre;
-    public int salario ;
+    public int salario;
     public int cedula;
     public String puesto;
     public Empresa empresa;
     public String empresas;
-    
+
     Departamento departamento;
     Proyectos proyectosAsig;
     Actividades tareasAsig;
 
-    public Persona(String nombre, int salario, int cedula,String puesto, Empresa empresa) {
+    public Persona(String nombre, int salario, int cedula, String puesto, Empresa empresa) {
         this.nombre = nombre;
         this.salario = salario;
         this.cedula = cedula;
@@ -35,7 +36,6 @@ public class Persona {
 
     public Persona() {
     }
-       
 
     public Persona(String nombre) {
         this.nombre = nombre;
@@ -44,9 +44,8 @@ public class Persona {
     public void setEmpresas(String empresas) {
         this.empresas = empresas;
     }
-    
-    
-     public String getNombre() {
+
+    public String getNombre() {
         return nombre;
     }
 
@@ -90,6 +89,4 @@ public class Persona {
         this.cedula = cedula;
     }
 
-
-   
 }
