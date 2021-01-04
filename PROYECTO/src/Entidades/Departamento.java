@@ -14,13 +14,13 @@ import Entidades.Persona;
  * @author Veronica Quesada
  */
 public class Departamento {
-    
-    public String nombreD  ;
+
+    public String nombreD;
     public Persona persona;
     public String nombreP;
     public Empresa empresa;
     public String empresas;
-    
+
     public Departamento() {
     }
 
@@ -29,8 +29,11 @@ public class Departamento {
         this.persona = persona;
         this.empresa = empresa;
     }
-    
-    
+
+    public Departamento(String nombreD, String nombreP) {
+        this.nombreD = nombreD;
+        this.nombreP = nombreP;
+    }
 
     public Departamento(String nombreD, Persona persona) {
         this.nombreD = nombreD;
@@ -61,8 +64,4 @@ public class Departamento {
         this.empresas = empresas;
     }
 
-    
-    
-    
-    
 }

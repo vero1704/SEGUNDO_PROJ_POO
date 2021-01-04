@@ -72,7 +72,7 @@ public class EditarPersona extends javax.swing.JFrame {
         btnRegistrar.setBackground(new java.awt.Color(102, 153, 255));
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/disquete.png"))); // NOI18N
-        btnRegistrar.setText("Guardar Persona");
+        btnRegistrar.setText("Actualizar Persona");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -115,33 +115,34 @@ public class EditarPersona extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRegistrar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalir))
+                                .addGap(98, 98, 98)
+                                .addComponent(jLabel7))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6))
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtPuesto)
-                                    .addComponent(txtSalario)
-                                    .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(141, 141, 141)
+                                .addComponent(cmbCedulas, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(48, 48, 48)
-                                    .addComponent(jLabel7))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(91, 91, 91)
-                                    .addComponent(cmbCedulas, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel6))
+                            .addGap(48, 48, 48)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmbEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPuesto)
+                                .addComponent(txtSalario)
+                                .addComponent(txtNombrePersona, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(118, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRegistrar)
+                .addGap(18, 18, 18)
+                .addComponent(btnSalir)
+                .addGap(93, 93, 93))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +182,7 @@ public class EditarPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-       registrarPersona();
+       actualizarPersona();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -193,45 +194,62 @@ public class EditarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPuestoActionPerformed
 
     
-      public void cargarEmpresa() {
+    public void cargarEmpresa() {
         try {
             ArrayList<Empresa> usuarios = procesos.mostrarEmpresas();
-            if(usuarios.size() == 0){
-                    JOptionPane.showMessageDialog(rootPane,"Debe de registrar primero a una familia");
-                } 
-            
-            else{
-            for (Empresa temp : usuarios) {  
-                cmbEmpresa.addItem(temp.getNombreE());
-                      
+            if (usuarios.size() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Debe de registrar primero a una familia");
+            } else {
+                for (Empresa temp : usuarios) {
+                    cmbEmpresa.addItem(temp.getNombreE());
+
+                }
             }
-            }
-            
+
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
     }
-      
-      public void cargarCedulas() {
+
+    public void cargarCedulas() {
         try {
             ArrayList<Persona> usuarios = procesos.mostrarCedulas();
-            if(usuarios.size() == 0){
-                    JOptionPane.showMessageDialog(rootPane,"Debe de registrar primero una persona");
-                } 
-            
-            else{
-            for (Persona temp : usuarios) {  
-                String cedulas = String.valueOf(temp.getCedula());
-                cmbCedulas.addItem(cedulas);
-                      
+            if (usuarios.size() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Debe de registrar primero una persona");
+            } else {
+                for (Persona temp : usuarios) {
+                    String cedulas = String.valueOf(temp.getCedula());
+                    cmbCedulas.addItem(cedulas);
+
+                }
             }
-            }
-            
+
         } catch (Exception e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
         }
     }
     
+    public void actualizarPersona() {
+
+        String nombre = txtNombrePersona.getText();
+        String puesto = txtPuesto.getText();
+        int cedula = Integer.parseInt((String) cmbCedulas.getSelectedItem());
+        int salario = Integer.parseInt(txtSalario.getText());
+        String empresa = (String) cmbEmpresa.getSelectedItem();
+
+        Empresa empresas = new Empresa(empresa);
+
+        Persona personas = new Persona(nombre, salario, cedula, puesto, empresas);
+        procesos.editarPersonas(personas);
+
+    }
+
+    public void volverInicio() {
+        Menu ventana = new Menu(this, true);
+        ventana.pack();
+        setVisible(false);
+        ventana.setVisible(true);
+    }
     
     /**
      * @param args the command line arguments
@@ -279,28 +297,7 @@ public class EditarPersona extends javax.swing.JFrame {
 
     }
     
-      public void registrarPersona() {
-          
-        String nombre = txtNombrePersona.getText();
-        String puesto = txtPuesto.getText();
-        int cedula = Integer.parseInt((String) cmbCedulas.getSelectedItem());
-        int salario = Integer.parseInt(txtSalario.getText());
-        String empresa = (String) cmbEmpresa.getSelectedItem();
-        
-        Empresa empresas = new Empresa(empresa);
-        
-        Persona personas = new Persona(nombre, salario,cedula, puesto, empresas);
-        procesos.editarPersonas(personas);
 
-        }
-        
-        public void volverInicio(){
-         Menu ventana = new Menu(this,true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnSalir;

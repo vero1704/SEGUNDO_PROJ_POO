@@ -63,7 +63,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/editar32.png"))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel5.setText("Nombre ");
+        jLabel5.setText("Nombre Completo ");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Empresa");
@@ -128,14 +128,14 @@ public class RegistrarPersona extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7))
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbEmpresa, 0, 166, Short.MAX_VALUE)
-                                    .addComponent(txtPuesto)
-                                    .addComponent(txtSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtNombrePersona)
-                                    .addComponent(txtCedula))))))
-                .addContainerGap(98, Short.MAX_VALUE))
+                                    .addComponent(txtCedula)
+                                    .addComponent(txtPuesto)
+                                    .addComponent(txtSalario)
+                                    .addComponent(cmbEmpresa, 0, 196, Short.MAX_VALUE))))))
+                .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

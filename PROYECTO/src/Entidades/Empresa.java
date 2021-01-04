@@ -11,10 +11,10 @@ package Entidades;
  * @author Veronica Quesada
  */
 public class Empresa {
+
     String nombreE;
     int telefono;
     String ubicacion;
-    
 
     public Empresa() {
     }
@@ -22,9 +22,7 @@ public class Empresa {
     public Empresa(String nombreE) {
         this.nombreE = nombreE;
     }
-    
-    
-    
+
     public Empresa(String nombreE, int telefono, String ubicacion) {
         this.nombreE = nombreE;
         this.telefono = telefono;
@@ -38,6 +36,7 @@ public class Empresa {
     public void setNombreE(String nombreE) {
         this.nombreE = nombreE;
     }
+
 
     public int getTelefono() {
         return telefono;
@@ -54,6 +53,5 @@ public class Empresa {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-    
-    
+
 }
