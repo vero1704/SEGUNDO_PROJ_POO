@@ -9,6 +9,7 @@ import Datos.Dato;
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
+import Entidades.Proyectos;
 import java.util.ArrayList;
 
 /**
@@ -89,4 +90,15 @@ public class Metodos {
      public void eliminarDptos(String dptos) {
         udatos.eliminarDptos(dptos);
     }
+     
+     public void RegistProy(Proyectos proyectos){
+         
+         
+         
+         
+     }
+     public void AgregarTareas(){
+         
+     }
+     
 }

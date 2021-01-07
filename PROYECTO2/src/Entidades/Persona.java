@@ -21,6 +21,7 @@ public class Persona {
     public String puesto;
     public Empresa empresa;
     public String empresas;
+    public int horas;
 
     Departamento departamento;
     Proyectos proyectosAsig;
