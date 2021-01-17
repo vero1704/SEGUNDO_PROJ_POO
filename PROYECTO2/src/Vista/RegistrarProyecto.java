@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Vista;
 
 /**
  *
@@ -33,18 +33,18 @@ public class RegistrarProyecto extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonAgregar = new javax.swing.JButton();
+        jButtonSalir = new javax.swing.JButton();
         cmbPersona1 = new javax.swing.JComboBox<>();
         cmbPersona2 = new javax.swing.JComboBox<>();
         jButtonNuevaT = new javax.swing.JButton();
         cmbPersona3 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldFecha = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldNombreProy = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        cmbPersona4 = new javax.swing.JComboBox<>();
+        cmbRecursos = new javax.swing.JComboBox<>();
         jButtonNuevoRec = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,9 +76,11 @@ public class RegistrarProyecto extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Encargado Tarea");
 
-        jButton1.setText("Agregar");
+        jButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disquete.png"))); // NOI18N
+        jButtonAgregar.setText("Guardar Proyecto");
 
-        jButton2.setText("Salir");
+        jButtonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
+        jButtonSalir.setText("Salir");
 
         cmbPersona1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -121,23 +123,23 @@ public class RegistrarProyecto extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Fecha Inicio");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNombreProy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldNombreProyActionPerformed(evt);
             }
         });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Recursos");
 
-        cmbPersona4.addItemListener(new java.awt.event.ItemListener() {
+        cmbRecursos.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbPersona4ItemStateChanged(evt);
+                cmbRecursosItemStateChanged(evt);
             }
         });
-        cmbPersona4.addActionListener(new java.awt.event.ActionListener() {
+        cmbRecursos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbPersona4ActionPerformed(evt);
+                cmbRecursosActionPerformed(evt);
             }
         });
 
@@ -173,21 +175,21 @@ public class RegistrarProyecto extends javax.swing.JFrame {
                         .addGap(68, 68, 68))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cmbPersona4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbRecursos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldNombreProy, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                        .addComponent(jButtonAgregar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                                        .addComponent(jButton2))
+                                        .addComponent(jButtonSalir))
                                     .addComponent(cmbPersona2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cmbEmpresaP, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cmbPersona1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonNuevoRec)
-                        .addGap(0, 9, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -208,7 +210,7 @@ public class RegistrarProyecto extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(20, 20, 20))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldNombreProy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
@@ -227,17 +229,17 @@ public class RegistrarProyecto extends javax.swing.JFrame {
                     .addComponent(cmbPersona2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(cmbPersona4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonNuevoRec))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonAgregar)
+                    .addComponent(jButtonSalir))
                 .addGap(42, 42, 42))
         );
 
@@ -276,17 +278,17 @@ public class RegistrarProyecto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbPersona3ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldNombreProyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreProyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldNombreProyActionPerformed
 
-    private void cmbPersona4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPersona4ItemStateChanged
+    private void cmbRecursosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRecursosItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPersona4ItemStateChanged
+    }//GEN-LAST:event_cmbRecursosItemStateChanged
 
-    private void cmbPersona4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPersona4ActionPerformed
+    private void cmbRecursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRecursosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPersona4ActionPerformed
+    }//GEN-LAST:event_cmbRecursosActionPerformed
 
     
     
@@ -331,15 +333,15 @@ public class RegistrarProyecto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbEmpresaP;
-    private javax.swing.JComboBox<String> cmbPersona1;
-    private javax.swing.JComboBox<String> cmbPersona2;
-    private javax.swing.JComboBox<String> cmbPersona3;
-    private javax.swing.JComboBox<String> cmbPersona4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonNuevaT;
-    private javax.swing.JButton jButtonNuevoRec;
+    public javax.swing.JComboBox<String> cmbEmpresaP;
+    public javax.swing.JComboBox<String> cmbPersona1;
+    public javax.swing.JComboBox<String> cmbPersona2;
+    public javax.swing.JComboBox<String> cmbPersona3;
+    public javax.swing.JComboBox<String> cmbRecursos;
+    public javax.swing.JButton jButtonAgregar;
+    public javax.swing.JButton jButtonNuevaT;
+    public javax.swing.JButton jButtonNuevoRec;
+    public javax.swing.JButton jButtonSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -348,7 +350,7 @@ public class RegistrarProyecto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextFieldFecha;
+    public javax.swing.JTextField jTextFieldNombreProy;
     // End of variables declaration//GEN-END:variables
 }

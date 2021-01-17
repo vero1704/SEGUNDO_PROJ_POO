@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Vista;
 
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
-import Negocios.Metodos;
+import Modelo.Metodos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,7 +24,7 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Mneu
      */
-    public Menu(java.awt.Frame parent, boolean modal) {
+    public Menu() {
         initComponents();
         cargarEmpresa();
         cargarPersonas();
@@ -49,13 +49,13 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPersona = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jButtonAdd = new javax.swing.JButton();
+        jButtonEdit = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         cmbEmpresas2 = new javax.swing.JComboBox<>();
         txtCon = new javax.swing.JLabel();
         btnBuscarEmpresa = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jButtonExit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaDepart = new javax.swing.JTable();
@@ -121,19 +121,19 @@ public class Menu extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Personas registradas");
 
-        jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/anadir.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAdd.setBackground(new java.awt.Color(102, 153, 255));
+        jButtonAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/anadir.png"))); // NOI18N
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonAddActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(102, 153, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/boton-editar.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEdit.setBackground(new java.awt.Color(102, 153, 255));
+        jButtonEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/boton-editar.png"))); // NOI18N
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonEditActionPerformed(evt);
             }
         });
 
@@ -148,11 +148,11 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setBackground(new java.awt.Color(102, 153, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jButtonExit.setBackground(new java.awt.Color(102, 153, 255));
+        jButtonExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
+        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jButtonExitActionPerformed(evt);
             }
         });
 
@@ -167,9 +167,9 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 791, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButtonExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(326, 326, 326)
                         .addComponent(jLabel1))
@@ -209,17 +209,17 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addComponent(cmbEmpresas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnBuscarEmpresa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(jButtonEdit)
                         .addGap(33, 33, 33)
-                        .addComponent(jButton10)
+                        .addComponent(jButtonExit)
                         .addGap(40, 40, 40)))
                 .addComponent(txtCon, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -344,7 +344,7 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(41, Short.MAX_VALUE))
+                        .addContainerGap(79, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4)
@@ -480,12 +480,9 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       RegistrarPersona ventana = new RegistrarPersona(this, true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+       
+    }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -531,16 +528,13 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarDepartamentoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        EditarPersona ventana = new EditarPersona(this, true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+       
+    }//GEN-LAST:event_jButtonEditActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-       volverInicio();
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void jButtonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExitActionPerformed
+       
+    }//GEN-LAST:event_jButtonExitActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
@@ -551,17 +545,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        EditarDpto ventana = new EditarDpto(this, true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
+       
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        RegistrarDepartamentos ventana = new RegistrarDepartamentos(this, true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
+       
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void tablaDepartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaDepartMouseClicked
@@ -649,13 +637,7 @@ public class Menu extends javax.swing.JFrame {
 
     }
        
-       public void volverInicio(){
-             inicio ventana = new inicio(this, true);
-             ventana.pack();
-             setVisible(false);
-             ventana.setVisible(true);
-       }
-
+     
     /**
      * @param args the command line arguments
      */
@@ -685,36 +667,25 @@ public class Menu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Menu dialog = new Menu(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+         
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Departamento;
     private javax.swing.JButton btnBuscarDepartamento;
-    private javax.swing.JButton btnBuscarEmpresa;
+    public javax.swing.JButton btnBuscarEmpresa;
     private javax.swing.JComboBox<String> cmbDeparta;
     private javax.swing.JComboBox<String> cmbEmpresas1;
-    private javax.swing.JComboBox<String> cmbEmpresas2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
+    public javax.swing.JComboBox<String> cmbEmpresas2;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
+    public javax.swing.JButton jButtonAdd;
+    public javax.swing.JButton jButtonEdit;
+    public javax.swing.JButton jButtonExit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -737,7 +708,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tablaDepart;
-    private javax.swing.JTable tablaPersona;
+    public javax.swing.JTable tablaPersona;
     private javax.swing.JLabel txtCon;
     // End of variables declaration//GEN-END:variables
 }

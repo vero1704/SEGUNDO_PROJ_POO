@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Vista;
 
+import Controlador.RegistrarEmpresaControlador;
 import Entidades.Empresa;
-import Negocios.Metodos;
+import Modelo.Metodos;
 
 
 /**
@@ -20,9 +21,11 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarEmpresa
      */
-    public RegistrarEmpresa(java.awt.Frame parent, boolean modal) {
+    public RegistrarEmpresa() {
         initComponents();
     }
+
+    
 
 
     /**
@@ -47,8 +50,8 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
         txtNombreEmpres = new javax.swing.JTextField();
         txtTelefonoEmpresa = new javax.swing.JTextField();
         txtUbicsacionEmpresa = new javax.swing.JTextField();
-        btnRegistrar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btnRegistrarEmp = new javax.swing.JButton();
+        btnSalirEmp = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -89,23 +92,23 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
             }
         });
 
-        btnRegistrar.setBackground(new java.awt.Color(102, 153, 255));
-        btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/disquete.png"))); // NOI18N
-        btnRegistrar.setText("Guardar Empresa");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarEmp.setBackground(new java.awt.Color(102, 153, 255));
+        btnRegistrarEmp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRegistrarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/disquete.png"))); // NOI18N
+        btnRegistrarEmp.setText("Guardar Empresa");
+        btnRegistrarEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnRegistrarEmpActionPerformed(evt);
             }
         });
 
-        btnSalir.setBackground(new java.awt.Color(102, 153, 255));
-        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/cerrar-sesion.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnSalirEmp.setBackground(new java.awt.Color(102, 153, 255));
+        btnSalirEmp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSalirEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/cerrar-sesion.png"))); // NOI18N
+        btnSalirEmp.setText("Salir");
+        btnSalirEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnSalirEmpActionPerformed(evt);
             }
         });
 
@@ -133,9 +136,9 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
                                     .addComponent(txtUbicsacionEmpresa)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
-                                .addComponent(btnRegistrar)
+                                .addComponent(btnRegistrarEmp)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnSalir))
+                                .addComponent(btnSalirEmp))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(28, 28, 28)
@@ -163,8 +166,8 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrar)
-                    .addComponent(btnSalir))
+                    .addComponent(btnRegistrarEmp)
+                    .addComponent(btnSalirEmp))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -175,13 +178,13 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUbicsacionEmpresaActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        registrarEmpresa();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    private void btnRegistrarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEmpActionPerformed
+        RegistrarEmpresaControlador.botonGuardarEmpresa();
+    }//GEN-LAST:event_btnRegistrarEmpActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-            volverInicio();
-    }//GEN-LAST:event_btnSalirActionPerformed
+    private void btnSalirEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirEmpActionPerformed
+        RegistrarEmpresaControlador.botonSalir();
+    }//GEN-LAST:event_btnSalirEmpActionPerformed
 
     private void txtTelefonoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoEmpresaActionPerformed
         // TODO add your handling code here:
@@ -215,43 +218,16 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                RegistrarEmpresa dialog = new RegistrarEmpresa(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+       
 
     }
     
-      public void registrarEmpresa() {
-          
-        String nombreEmpresa = txtNombreEmpres.getText();
-        int telefono = Integer.parseInt(txtTelefonoEmpresa.getText());
-        String ubicacion = txtUbicsacionEmpresa.getText();
-        
-          Empresa empresas = new Empresa(nombreEmpresa, telefono, ubicacion);
-         procesos.guardarEmpresa(empresas);
-
-        }
-        
-        public void volverInicio(){
-         inicio ventana = new inicio(this,true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
-    }
+      
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnRegistrar;
-    public javax.swing.JButton btnSalir;
+    public javax.swing.JButton btnRegistrarEmp;
+    public javax.swing.JButton btnSalirEmp;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -262,8 +238,8 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField txtNombreEmpres;
-    private javax.swing.JTextField txtTelefonoEmpresa;
-    private javax.swing.JTextField txtUbicsacionEmpresa;
+    public javax.swing.JTextField txtNombreEmpres;
+    public javax.swing.JTextField txtTelefonoEmpresa;
+    public javax.swing.JTextField txtUbicsacionEmpresa;
     // End of variables declaration//GEN-END:variables
 }

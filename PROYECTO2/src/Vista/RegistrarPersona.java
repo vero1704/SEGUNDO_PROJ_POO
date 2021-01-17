@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Vista;
 
+import Controlador.RegistrarPersonaControlador;
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
-import Negocios.Metodos;
+import Modelo.Metodos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -23,10 +24,12 @@ public class RegistrarPersona extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarDepartamentos
      */
-    public RegistrarPersona(java.awt.Frame parent, boolean modal) {
+    public RegistrarPersona() {
         initComponents();
-        cargarEmpresa();
+        
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,8 +46,8 @@ public class RegistrarPersona extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtNombrePersona = new javax.swing.JTextField();
         cmbEmpresa = new javax.swing.JComboBox<>();
-        btnRegistrar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btnRegistrarPer = new javax.swing.JButton();
+        btnSalirPer = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtPuesto = new javax.swing.JTextField();
@@ -68,23 +71,35 @@ public class RegistrarPersona extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Empresa");
 
-        btnRegistrar.setBackground(new java.awt.Color(102, 153, 255));
-        btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/disquete.png"))); // NOI18N
-        btnRegistrar.setText("Guardar Persona");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        txtNombrePersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                txtNombrePersonaActionPerformed(evt);
             }
         });
 
-        btnSalir.setBackground(new java.awt.Color(102, 153, 255));
-        btnSalir.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/cerrar-sesion.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        cmbEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                cmbEmpresaActionPerformed(evt);
+            }
+        });
+
+        btnRegistrarPer.setBackground(new java.awt.Color(102, 153, 255));
+        btnRegistrarPer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRegistrarPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/disquete.png"))); // NOI18N
+        btnRegistrarPer.setText("Guardar Persona");
+        btnRegistrarPer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarPerActionPerformed(evt);
+            }
+        });
+
+        btnSalirPer.setBackground(new java.awt.Color(102, 153, 255));
+        btnSalirPer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnSalirPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/cerrar-sesion.png"))); // NOI18N
+        btnSalirPer.setText("Salir");
+        btnSalirPer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirPerActionPerformed(evt);
             }
         });
 
@@ -97,6 +112,12 @@ public class RegistrarPersona extends javax.swing.JFrame {
         txtPuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPuestoActionPerformed(evt);
+            }
+        });
+
+        txtSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioActionPerformed(evt);
             }
         });
 
@@ -118,9 +139,9 @@ public class RegistrarPersona extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRegistrar)
+                                .addComponent(btnRegistrarPer)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnSalir))
+                                .addComponent(btnSalirPer))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
@@ -166,45 +187,40 @@ public class RegistrarPersona extends javax.swing.JFrame {
                     .addComponent(cmbEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir)
-                    .addComponent(btnRegistrar))
+                    .addComponent(btnSalirPer)
+                    .addComponent(btnRegistrarPer))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-       registrarPersona();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+    private void btnRegistrarPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPerActionPerformed
+        RegistrarPersonaControlador.botonGuardaPersona();
+    }//GEN-LAST:event_btnRegistrarPerActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        volverInicio();
-    }//GEN-LAST:event_btnSalirActionPerformed
+    private void btnSalirPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirPerActionPerformed
+        RegistrarPersonaControlador.botonSalir();
+    }//GEN-LAST:event_btnSalirPerActionPerformed
 
     private void txtPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPuestoActionPerformed
 
+    private void txtNombrePersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombrePersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombrePersonaActionPerformed
+
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioActionPerformed
+
+    private void cmbEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpresaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEmpresaActionPerformed
+
     
-      public void cargarEmpresa() {
-        try {
-            ArrayList<Empresa> usuarios = procesos.mostrarEmpresas();
-            if(usuarios.size() == 0){
-                    JOptionPane.showMessageDialog(rootPane,"Debe de registrar primero a una familia");
-                } 
-            
-            else{
-            for (Empresa temp : usuarios) {  
-                cmbEmpresa.addItem(temp.getNombreE());
-                      
-            }
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace(); 
-        }
-    }
+    
     
     
     /**
@@ -236,47 +252,15 @@ public class RegistrarPersona extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-          public void run() {
-                RegistrarPersona dialog = new RegistrarPersona(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+      
 
     }
     
-      public void registrarPersona() {
-          
-        String nombre = txtNombrePersona.getText();
-        String puesto = txtPuesto.getText();
-        int cedula = Integer.parseInt(txtCedula.getText());
-        int salario = Integer.parseInt(txtSalario.getText());
-        String empresa = (String) cmbEmpresa.getSelectedItem();
-        
-        Empresa empresas = new Empresa(empresa);
-        
-        Persona personas = new Persona(nombre, salario,cedula, puesto, empresas);
-        procesos.guardarPersona(personas);
-
-        }
-        
-        public void volverInicio(){
-         Menu ventana = new Menu(this,true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnRegistrar;
-    public javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cmbEmpresa;
+    public javax.swing.JButton btnRegistrarPer;
+    public javax.swing.JButton btnSalirPer;
+    public javax.swing.JComboBox<String> cmbEmpresa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -284,9 +268,9 @@ public class RegistrarPersona extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtNombrePersona;
-    private javax.swing.JTextField txtPuesto;
-    private javax.swing.JTextField txtSalario;
+    public javax.swing.JTextField txtCedula;
+    public javax.swing.JTextField txtNombrePersona;
+    public javax.swing.JTextField txtPuesto;
+    public javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }

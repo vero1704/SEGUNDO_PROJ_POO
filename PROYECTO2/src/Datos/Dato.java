@@ -9,6 +9,8 @@ import Conexion.Conexion;
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
+import Entidades.Proyectos;
+import Entidades.Recursos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class Dato {
 
-    public void insertarEmpresa(Empresa empresas) {
+    public static void insertarEmpresa(Empresa empresas) {
         try (Connection connection = Conexion.getConexion()) {
             String sql = "INSERT INTO empresa(\n"
                     + "	 nombreempresa, telefono, ubicacion)\n"
@@ -98,7 +100,7 @@ public class Dato {
         }
     }
 
-    public void insertarPersona(Persona personas) {
+    public static void insertarPersona(Persona personas) {
         try (Connection connection = Conexion.getConexion()) {
             String sql = "INSERT INTO public.persona(\n"
                     + "	nombrepersona, puesto, empresa, salario,ced)\n"
@@ -127,7 +129,7 @@ public class Dato {
         }
     }
 
-    public ArrayList<Persona> mostrarPersonas() {
+    public static ArrayList<Persona> mostrarPersonas() {
 
         ArrayList<Persona> personas = new ArrayList<>();
 
@@ -149,7 +151,7 @@ public class Dato {
         return personas;
     }
 
-    public ArrayList<Persona> mostrarTodasPersonas() {
+    public static ArrayList<Persona> mostrarTodasPersonas() {
         ArrayList<Persona> informes = new ArrayList<>();
 
         try (Connection connection = Conexion.getConexion()) {
@@ -173,7 +175,7 @@ public class Dato {
         return informes;
     }
 
-    public ArrayList<Departamento> cargasTodasDpto() {
+    public static ArrayList<Departamento> cargasTodasDpto() {
 
         ArrayList<Departamento> informes = new ArrayList<>();
 
@@ -197,7 +199,7 @@ public class Dato {
         return informes;
     }
 
-    public ArrayList<Persona> mostrarIPersonasEspecificos(Empresa infoEmpresa) {
+    public static ArrayList<Persona> mostrarIPersonasEspecificos(Empresa infoEmpresa) {
 
         ArrayList<Persona> personas = new ArrayList<>();
         try (Connection connection = Conexion.getConexion()) {
@@ -223,7 +225,7 @@ public class Dato {
         return personas;
     }
 
-    public ArrayList<Departamento> mostrarDptoEspecificos(Empresa infoEmpresa) {
+    public static ArrayList<Departamento> mostrarDptoEspecificos(Empresa infoEmpresa) {
 
         ArrayList<Departamento> dptos = new ArrayList<>();
         try (Connection connection = Conexion.getConexion()) {
@@ -247,7 +249,7 @@ public class Dato {
         return dptos;
     }
 
-    public ArrayList<Persona> mostrarCedulas() {
+    public static ArrayList<Persona> mostrarCedulas() {
 
         ArrayList<Persona> ids = new ArrayList<>();
 
@@ -269,7 +271,7 @@ public class Dato {
         return ids;
     }
 
-    public void editarPersona(Persona personas) {
+    public static void editarPersona(Persona personas) {
         try (Connection connection = Conexion.getConexion()) {
             String sql = "UPDATE persona\n"
                     + "	SET nombrepersona=?, puesto=?, empresa=?, salario=?\n"
@@ -298,7 +300,7 @@ public class Dato {
         }
     }
 
-    public ArrayList<Empresa> empresasPersona(Persona personas) {
+    public static ArrayList<Empresa> empresasPersona(Persona personas) {
 
         ArrayList<Empresa> empresas = new ArrayList<>();
         try (Connection connection = Conexion.getConexion()) {
@@ -320,7 +322,7 @@ public class Dato {
         return empresas;
     }
 
-    public ArrayList<Departamento> mostrarDptoEsp(Empresa emp) {
+    public static ArrayList<Departamento> mostrarDptoEsp(Empresa emp) {
 
         ArrayList<Departamento> dpto = new ArrayList<>();
         try (Connection connection = Conexion.getConexion()) {
@@ -342,7 +344,7 @@ public class Dato {
         return dpto;
     }
     
-    public ArrayList<Persona> PersonaEmpresa(Empresa emp) {
+    public static ArrayList<Persona> PersonaEmpresa(Empresa emp) {
 
         ArrayList<Persona> person = new ArrayList<>();
         try (Connection connection = Conexion.getConexion()) {
@@ -364,7 +366,7 @@ public class Dato {
         return person;
     }
     
-    public void editarDpto(Departamento dpto) {
+    public static void editarDpto(Departamento dpto) {
         try (Connection connection = Conexion.getConexion()) {
             String sql = "UPDATE departamento\n" +
 "	SET  encargado=? WHERE nombredpto=?;";
@@ -390,7 +392,7 @@ public class Dato {
         }
     }
     
-     public void eliminarPersonas(int person) {
+     public static  void eliminarPersonas(int person) {
         try (Connection connection = Conexion.getConexion()) {
             String sql = "delete from persona where ced =  ? ";
 
@@ -413,7 +415,7 @@ public class Dato {
 
     }
     
-    public void eliminarDptos(String dptos) {
+    public static void eliminarDptos(String dptos) {
         try (Connection connection = Conexion.getConexion()) {
             String sql = "delete from departamento where nombredpto =  ? ";
 
@@ -435,5 +437,42 @@ public class Dato {
         }
 
     }
+    
+    public static void insertarProyecto(Proyectos proyectos){
+        try (Connection connection = Conexion.getConexion()) {
+            String sql = "INSERT INTO public.proyectos(	id, empresa, nombrep, encargadop, tareas, fechainicio)	VALUES (?, ?, ?, ?, ?, ?);";
 
-}
+            PreparedStatement p = connection.prepareStatement(sql);
+            p.setInt(1, proyectos.getId());
+            p.setString(2, proyectos.getempresa());
+            p.setString(3, proyectos.getnombrep());
+            p.setString(4, proyectos.getencargadop());
+            p.setString(5, proyectos.gettareas());
+            p.setString(6, proyectos.getfechainicio());
+
+
+            int res = p.executeUpdate();
+
+            if (res == 1) {
+                JOptionPane.showMessageDialog(null, "Se ha registrado "
+                        + "satisfactoriamente!", "INFORMACION",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Lo sentimos, registro fallido",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("No se pudo establecer la conexión");
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }

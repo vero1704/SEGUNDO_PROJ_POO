@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Vista;
 
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
-import Negocios.Metodos;
+import Modelo.Metodos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -23,7 +23,7 @@ public class EditarPersona extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarDepartamentos
      */
-    public EditarPersona(java.awt.Frame parent, boolean modal) {
+    public EditarPersona() {
         initComponents();
         cargarEmpresa();
         cargarCedulas();
@@ -186,7 +186,7 @@ public class EditarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        volverInicio();
+        
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoActionPerformed
@@ -244,13 +244,6 @@ public class EditarPersona extends javax.swing.JFrame {
 
     }
 
-    public void volverInicio() {
-        Menu ventana = new Menu(this, true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -282,18 +275,7 @@ public class EditarPersona extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-          public void run() {
-                EditarPersona dialog = new EditarPersona(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+              
 
     }
     
@@ -301,17 +283,17 @@ public class EditarPersona extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cmbCedulas;
-    private javax.swing.JComboBox<String> cmbEmpresa;
+    public javax.swing.JComboBox<String> cmbCedulas;
+    public javax.swing.JComboBox<String> cmbEmpresa;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField txtNombrePersona;
-    private javax.swing.JTextField txtPuesto;
-    private javax.swing.JTextField txtSalario;
+    public javax.swing.JTextField txtNombrePersona;
+    public javax.swing.JTextField txtPuesto;
+    public javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }

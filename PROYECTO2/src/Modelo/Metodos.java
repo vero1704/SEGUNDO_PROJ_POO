@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Negocios;
+package Modelo;
 
 import Datos.Dato;
 import Entidades.Departamento;
@@ -20,9 +20,9 @@ public class Metodos {
     
     Dato udatos = new Dato();
 
-    public void guardarEmpresa(Empresa empresas) {
+    public static void guardarEmpresa(Empresa empresas) {
 
-        udatos.insertarEmpresa(empresas);
+        Dato.insertarEmpresa(empresas);
 
     }
 
@@ -34,9 +34,13 @@ public class Metodos {
         udatos.insertarDpto(dpto);
 
     }
+    
+    public static void guardarProyecto(Proyectos proyecto){
+        Dato.insertarProyecto(proyecto);
+    }
 
-    public void guardarPersona(Persona personas) {
-        udatos.insertarPersona(personas);
+    public static void guardarPersona(Persona personas) {
+        Dato.insertarPersona(personas);
     }
 
     public ArrayList<Persona> mostrarPersonas() {
@@ -63,8 +67,8 @@ public class Metodos {
         return udatos.mostrarCedulas();
     }
 
-    public void editarPersonas(Persona personas) {
-        udatos.editarPersona(personas);
+    public static void editarPersonas(Persona personas) {
+        Dato.editarPersona(personas);
     }
 
     public ArrayList<Empresa> empresaPersona(Persona personas) {
@@ -79,25 +83,25 @@ public class Metodos {
         return udatos.PersonaEmpresa(emp);
     }
     
-     public void editarDpto(Departamento dpto) {
-        udatos.editarDpto(dpto);
+     public static void editarDpto(Departamento dpto) {
+        Dato.editarDpto(dpto);
     }
      
-     public void eliminarPersona(int person) {
-        udatos.eliminarPersonas(person);
+     public static void eliminarPersona(int person) {
+        Dato.eliminarPersonas(person);
     }
      
-     public void eliminarDptos(String dptos) {
-        udatos.eliminarDptos(dptos);
+     public static void eliminarDptos(String dptos) {
+        Dato.eliminarDptos(dptos);
     }
      
-     public void RegistProy(Proyectos proyectos){
+     public static void RegistProy(Proyectos proyectos){
          
          
          
          
      }
-     public void AgregarTareas(){
+     public static void AgregarTareas(){
          
      }
      

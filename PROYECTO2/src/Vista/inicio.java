@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Vista;
+
+import Controlador.RegistrarEmpresaControlador;
+import Controlador.inicioControlador;
 
 /**
  *
@@ -14,9 +17,10 @@ public class inicio extends javax.swing.JFrame {
     /**
      * Creates new form inicio
      */
-    public inicio(java.awt.Frame parent, boolean modal) {
+    public inicio() {
         initComponents();
     }
+
 
   
     /**
@@ -119,17 +123,16 @@ public class inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPantallaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPantallaPrincipalActionPerformed
-        Menu ventana = new Menu(this,true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
+       
+        
+        
     }//GEN-LAST:event_btnPantallaPrincipalActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-       RegistrarEmpresa ventana = new RegistrarEmpresa(this, true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
+   
+       inicioControlador.LlamarEmpresa();
+        
+        
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     
@@ -162,23 +165,12 @@ public class inicio extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-               inicio dialog = new inicio(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPantallaPrincipal;
-    private javax.swing.JButton btnRegistrar;
+    public javax.swing.JButton btnPantallaPrincipal;
+    public javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

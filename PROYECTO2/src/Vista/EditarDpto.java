@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package Vista;
 
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
-import Negocios.Metodos;
+import Modelo.Metodos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -23,7 +23,7 @@ public class EditarDpto extends javax.swing.JFrame {
     /**
      * Creates new form EditarDpto
      */
-    public EditarDpto(java.awt.Frame parent, boolean modal) {
+    public EditarDpto() {
         initComponents();
         cargarEmpresa();
     }
@@ -62,7 +62,7 @@ public class EditarDpto extends javax.swing.JFrame {
         cmbEmpresa = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         cmbDpto = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jButtonBuscarEnc = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         cmbPersona = new javax.swing.JComboBox<>();
         btnRegistrar = new javax.swing.JButton();
@@ -104,11 +104,11 @@ public class EditarDpto extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(102, 153, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search (1).png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscarEnc.setBackground(new java.awt.Color(102, 153, 255));
+        jButtonBuscarEnc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search (1).png"))); // NOI18N
+        jButtonBuscarEnc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonBuscarEncActionPerformed(evt);
             }
         });
 
@@ -160,7 +160,6 @@ public class EditarDpto extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
@@ -176,7 +175,7 @@ public class EditarDpto extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cmbDpto, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton1)))))
+                                        .addComponent(jButtonBuscarEnc)))))
                         .addGap(37, 37, 37))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel8)
@@ -202,7 +201,7 @@ public class EditarDpto extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addComponent(jButtonBuscarEnc)
                     .addComponent(cmbDpto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
@@ -235,7 +234,7 @@ public class EditarDpto extends javax.swing.JFrame {
    
     }//GEN-LAST:event_cmbEmpresaItemStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonBuscarEncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarEncActionPerformed
          try {
             String empresa = (String) cmbEmpresa.getSelectedItem();
             Empresa empresaEsp = new Empresa(empresa);
@@ -252,7 +251,7 @@ public class EditarDpto extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonBuscarEncActionPerformed
 
     
     private void cmbPersonaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPersonaItemStateChanged
@@ -268,7 +267,7 @@ public class EditarDpto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        volverInicio();
+       
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
@@ -299,26 +298,9 @@ public class EditarDpto extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-          java.awt.EventQueue.invokeLater(new Runnable() {
-          public void run() {
-                EditarDpto dialog = new EditarDpto(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-
+       
     }
-       public void volverInicio() {
-        Menu ventana = new Menu(this, true);
-        ventana.pack();
-        setVisible(false);
-        ventana.setVisible(true);
-    }
+      
 
     public void actualizarDpto() {
 
@@ -354,10 +336,10 @@ public class EditarDpto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrar;
     public javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cmbDpto;
-    private javax.swing.JComboBox<String> cmbEmpresa;
-    private javax.swing.JComboBox<String> cmbPersona;
-    private javax.swing.JButton jButton1;
+    public javax.swing.JComboBox<String> cmbDpto;
+    public javax.swing.JComboBox<String> cmbEmpresa;
+    public javax.swing.JComboBox<String> cmbPersona;
+    public javax.swing.JButton jButtonBuscarEnc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
