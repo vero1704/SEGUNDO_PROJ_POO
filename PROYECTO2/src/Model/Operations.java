@@ -9,11 +9,14 @@ import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
 import Entidades.Proyectos;
+import Excepcion.ExcepcionesEmpresa;
+import Excepcion.ExcepcionesPersona;
 import Modelo.Metodos;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import Vista.*;
+import java.awt.Component;
 
 
 
@@ -25,16 +28,55 @@ public class Operations extends javax.swing.JFrame {
      private static RegistrarPersona vista;
     
     public static Metodos procesos = new Metodos();
-   
+     
     
-  
- 
+
      public static void registrarPersona( String nombre, String puesto, int cedula, int salario, String empresa)  {
      
         
         Empresa empresas = new Empresa(empresa);
-        
+               Component rootPane = null;
+
         Persona personas = new Persona(nombre, salario,cedula, puesto, empresas);
+        
+         try {
+            personas.setNombre(nombre);
+
+        } catch (ExcepcionesPersona variable) {
+            JOptionPane.showMessageDialog(rootPane, variable);
+              variable.printStackTrace();
+            
+        }
+
+          try {
+              personas.setSalario(salario);
+
+          } catch (ExcepcionesPersona variable) {
+              JOptionPane.showMessageDialog(rootPane, variable);
+          }
+
+          try {
+              personas.setPuesto(puesto);
+
+          } catch (ExcepcionesPersona variable) {
+              JOptionPane.showMessageDialog(rootPane, variable);
+          }
+          
+             try {
+              personas.setEmpresas(empresa);
+
+          } catch (ExcepcionesPersona variable) {
+              JOptionPane.showMessageDialog(rootPane, variable);
+          }
+             
+             try {
+              personas.setCedula(cedula);
+
+          } catch (ExcepcionesPersona variable) {
+              JOptionPane.showMessageDialog(rootPane, variable);
+          }
+
+
         Metodos.guardarPersona(personas);
 
         }
@@ -46,6 +88,29 @@ public class Operations extends javax.swing.JFrame {
     
         
           Empresa empresas = new Empresa(nombreEmpresa, telefono, ubicacion);
+                 Component rootPane = null;
+                 
+          try {
+            empresas.setNombreE(nombreEmpresa);
+
+        } catch (ExcepcionesEmpresa variable) {
+            JOptionPane.showMessageDialog(rootPane, variable);
+        }
+
+        try {
+            empresas.setTelefono(telefono);
+
+        } catch (ExcepcionesEmpresa variable) {
+            JOptionPane.showMessageDialog(rootPane, variable);
+        }
+
+        try {
+            empresas.setUbicacion(ubicacion);
+
+        } catch (ExcepcionesEmpresa variable) {
+            JOptionPane.showMessageDialog(rootPane, variable);
+        }
+   
          Metodos.guardarEmpresa(empresas);
 
         }
@@ -91,24 +156,10 @@ public class Operations extends javax.swing.JFrame {
         }
 
     }
-         public static void cargarEmpresa() {
-        try {
-            ArrayList<Empresa> usuarios = procesos.mostrarEmpresas();
-            if (usuarios.size() == 0) {
-                //JOptionPane.showMessageDialog(rootPane, "Debe de registrar primero una empresa");
-            } else {
-                for (Empresa temp : usuarios) {
-                    vista.cmbEmpresa.addItem(temp.getNombreE());
-
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
     }
         
         
         
       
-}
+

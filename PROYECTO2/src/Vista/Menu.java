@@ -5,9 +5,12 @@
  */
 package Vista;
 
+import Controlador.MenuControlador;
+import Controlador.RegistrarPersonaControlador;
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
+import Entidades.Proyectos;
 import Modelo.Metodos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -71,7 +74,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         cmbEmpresas1 = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tablaProyectos = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
@@ -79,6 +82,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
+        btnBuscarProyetco = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -357,20 +361,26 @@ public class Menu extends javax.swing.JFrame {
 
         Departamento.addTab("Departamentos", jPanel2);
 
-        jTable3.setForeground(new java.awt.Color(0, 0, 102));
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        cmbEmpresas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEmpresas1ActionPerformed(evt);
+            }
+        });
+
+        tablaProyectos.setForeground(new java.awt.Color(0, 0, 102));
+        tablaProyectos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Empresa", "Proyecto"
             }
         ));
-        jTable3.setGridColor(new java.awt.Color(0, 0, 102));
-        jScrollPane3.setViewportView(jTable3);
+        tablaProyectos.setGridColor(new java.awt.Color(0, 0, 102));
+        jScrollPane3.setViewportView(tablaProyectos);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 12));
@@ -403,6 +413,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarProyetco.setBackground(new java.awt.Color(102, 153, 255));
+        btnBuscarProyetco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search (1).png"))); // NOI18N
+        btnBuscarProyetco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarProyetcoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -423,7 +441,9 @@ public class Menu extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbEmpresas1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbEmpresas1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscarProyetco, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(155, 155, 155)
@@ -445,10 +465,11 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel10)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
-                    .addComponent(cmbEmpresas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbEmpresas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarProyetco))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -481,7 +502,7 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
-       
+            MenuControlador.RegistrarPerosn();
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -582,6 +603,31 @@ public class Menu extends javax.swing.JFrame {
         modelo.removeRow(row);
     }//GEN-LAST:event_tablaPersonaMouseClicked
 
+    private void btnBuscarProyetcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProyetcoActionPerformed
+       try {
+            String dep = (String) cmbEmpresas1.getSelectedItem();
+            Empresa infoDpto = new Empresa();
+            infoDpto.setNombreE(dep);
+
+            ArrayList<Proyectos> dptos = procesos.mostrarProyec(infoDpto);
+            DefaultTableModel modelo = (DefaultTableModel) tablaProyectos.getModel();
+            modelo.setRowCount(0);
+
+            for (Proyectos temp : dptos) {
+                Object[] fila = {temp.getempresa(),temp.getnombrep()};
+                modelo.addRow(fila);
+            }
+
+        } catch (Exception e) {
+            txtCon.setText("No hay proyectos registrados");
+        }
+      
+    }//GEN-LAST:event_btnBuscarProyetcoActionPerformed
+
+    private void cmbEmpresas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpresas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbEmpresas1ActionPerformed
+
     
       public void cargarEmpresa() {
         try {
@@ -674,6 +720,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTabbedPane Departamento;
     private javax.swing.JButton btnBuscarDepartamento;
     public javax.swing.JButton btnBuscarEmpresa;
+    private javax.swing.JButton btnBuscarProyetco;
     private javax.swing.JComboBox<String> cmbDeparta;
     private javax.swing.JComboBox<String> cmbEmpresas1;
     public javax.swing.JComboBox<String> cmbEmpresas2;
@@ -705,10 +752,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tablaDepart;
     public javax.swing.JTable tablaPersona;
+    private javax.swing.JTable tablaProyectos;
     private javax.swing.JLabel txtCon;
     // End of variables declaration//GEN-END:variables
 }

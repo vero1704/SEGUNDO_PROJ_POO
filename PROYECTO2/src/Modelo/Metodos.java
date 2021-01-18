@@ -58,6 +58,10 @@ public class Metodos {
     public ArrayList<Persona> mostrarPersonaEspecifico(Empresa infoEmpresa) {
         return udatos.mostrarIPersonasEspecificos(infoEmpresa);
     }
+    
+    public ArrayList<Proyectos> mostrarProyec(Empresa infoEmpresa) {
+        return udatos.mostrarProyectos(infoEmpresa);
+    }
 
     public ArrayList<Departamento> mostrarDptoEspecificos(Empresa infoEmpresa) {
         return udatos.mostrarDptoEspecificos(infoEmpresa);
@@ -101,6 +105,7 @@ public class Metodos {
          
          
      }
+     
      public static void AgregarTareas(){
          
      }

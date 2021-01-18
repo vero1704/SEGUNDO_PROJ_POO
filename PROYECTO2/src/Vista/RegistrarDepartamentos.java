@@ -207,11 +207,7 @@ public class RegistrarDepartamentos extends javax.swing.JFrame {
 
     }
     
-     
-
-   
-
-    public void cargarPersona() {
+        public void cargarPersona() {
         try {
             String empresa = (String) cmbEmpresa.getSelectedItem();
             Empresa infoEmpresa = new Empresa(empresa);

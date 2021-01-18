@@ -23,10 +23,8 @@ public class Proyectos {
    String fechainicio;
    
     Departamento departamento , encargado;
-    public ArrayList ListaP; 
     String estado;
     Boolean compartido;
-    public ArrayList Tarea; 
 
     public Proyectos(int Id, String empresa, String nombreP, String encargadop, String Tareas, String encarTarea,String fechainicio) {
         this.Id = Id;
@@ -38,6 +36,11 @@ public class Proyectos {
         this.fechainicio = fechainicio;
         
     }
+
+    public Proyectos() {
+    }
+    
+    
 
     public int getId() {
         return Id;
@@ -75,10 +78,6 @@ public class Proyectos {
         return encargado;
     }
 
-    public ArrayList getListaP() {
-        return ListaP;
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -87,8 +86,32 @@ public class Proyectos {
         return compartido;
     }
 
-    public ArrayList getTarea() {
-        return Tarea;
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public void setNombreP(String nombreP) {
+        this.nombreP = nombreP;
+    }
+
+    public void setEncargadop(String encargadop) {
+        this.encargadop = encargadop;
+    }
+
+    public void setTareas(String Tareas) {
+        this.Tareas = Tareas;
+    }
+
+    public void setFechainicio(String fechainicio) {
+        this.fechainicio = fechainicio;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     

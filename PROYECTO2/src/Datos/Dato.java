@@ -467,10 +467,30 @@ public class Dato {
         }
     }
     
-    
-    
-    
-    
+    public static ArrayList<Proyectos> mostrarProyectos(Empresa infoEmpresa) {
+
+        ArrayList<Proyectos> proyect = new ArrayList<>();
+        try (Connection connection = Conexion.getConexion()) {
+            String sql = "select empresa, nombrep from proyectos where empresa  = ? ";
+
+            PreparedStatement p = connection.prepareStatement(sql);
+            p.setString(1, infoEmpresa.getNombreE());
+
+            ResultSet rs = p.executeQuery();
+            while (rs.next()) {
+                Proyectos customer = new Proyectos();
+                customer.setEmpresa(rs.getString("empresa"));
+                customer.setNombreP(rs.getString("nombrep"));
+                proyect.add(customer);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("No se pudo establecer la conexión");
+        }
+
+        return proyect;
+    }
+
+
     
     
     

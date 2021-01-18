@@ -1,5 +1,7 @@
 package Entidades;
 
+import Excepcion.ExcepcionesEmpresa;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,7 +14,7 @@ package Entidades;
  */
 public class Empresa {
 
-    String nombreE;
+     String nombreE;
     int telefono;
     String ubicacion;
 
@@ -33,25 +35,37 @@ public class Empresa {
         return nombreE;
     }
 
-    public void setNombreE(String nombreE) {
-        this.nombreE = nombreE;
-    }
+    public void setNombreE(String nombreE) throws ExcepcionesEmpresa {
+        if (nombreE.equals("")) {
+            throw new ExcepcionesEmpresa("Los datos deben de llenarse");
+        } else {
+            this.nombreE = nombreE;
+        }
 
+    }
 
     public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
+    public void setTelefono(int telefono) throws ExcepcionesEmpresa {
+        if (telefono >= 0) {
+            throw new ExcepcionesEmpresa("Su telefono debe ser mayor que 0");
+        } else {
+            this.telefono = telefono;
+        }
     }
 
     public String getUbicacion() {
         return ubicacion;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
-    }
+    public void setUbicacion(String ubicacion) throws ExcepcionesEmpresa {
+        if (ubicacion.equals("")) {
+            throw new ExcepcionesEmpresa("Los datos deben de llenarse");
+        } else {
+            this.ubicacion = ubicacion;
+        }
 
-}
+    }
+    }

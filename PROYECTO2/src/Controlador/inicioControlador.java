@@ -28,9 +28,16 @@ public class inicioControlador {
        
    }
    
+     public static void LlamarMenu(){
+       ocultar();
+       MenuControlador.mostrar();
+       
+   }
+   
    public static void volverInicio(){
        mostrar();
    }
+  
    
    
   

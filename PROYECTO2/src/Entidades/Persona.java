@@ -2,6 +2,7 @@ package Entidades;
 
 
 import Entidades.Proyectos;
+import Excepcion.ExcepcionesPersona;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,13 +16,12 @@ import Entidades.Proyectos;
  */
 public class Persona {
 
-    public String nombre;
+public String nombre;
     public int salario;
     public int cedula;
     public String puesto;
     public Empresa empresa;
     public String empresas;
-    public int horas;
 
     Departamento departamento;
     Proyectos proyectosAsig;
@@ -42,32 +42,56 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public void setEmpresas(String empresas) {
-        this.empresas = empresas;
+    public void setEmpresas(String empresas) throws ExcepcionesPersona {
+
+        if (empresas.equals("")) {
+            throw new ExcepcionesPersona("El dato debe de llenarse");
+
+        } else {
+            this.empresas = empresas;
+        }
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) throws ExcepcionesPersona {
+        
+        if (nombre.equals("")) {
+            throw new ExcepcionesPersona("El dato debe de llenarse");
+
+        } else {
+            this.nombre = nombre;
+        }
     }
 
     public int getSalario() {
         return salario;
     }
 
-    public void setSalario(int salario) {
-        this.salario = salario;
+    public void setSalario(int salario) throws ExcepcionesPersona {
+
+        if (salario >= 0) {
+            throw new ExcepcionesPersona("Su salario debe ser mayor que 0");
+        } else {
+            this.salario = salario;
+        }
+
     }
 
     public String getPuesto() {
         return puesto;
     }
 
-    public void setPuesto(String puesto) {
-        this.puesto = puesto;
+    public void setPuesto(String puesto) throws ExcepcionesPersona {
+
+        if (puesto.equals("")) {
+            throw new ExcepcionesPersona("El dato debe de llenarse");
+
+        } else {
+            this.puesto = puesto;
+        }
     }
 
     public Empresa getEmpresa() {
@@ -86,8 +110,14 @@ public class Persona {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
+    public void setCedula(int cedula) throws ExcepcionesPersona {
+
+        if (cedula >= 0) {
+            throw new ExcepcionesPersona("Su cedula debe ser mayor que 0");
+        } else {
+            this.cedula = cedula;
+        }
+
     }
 
 }

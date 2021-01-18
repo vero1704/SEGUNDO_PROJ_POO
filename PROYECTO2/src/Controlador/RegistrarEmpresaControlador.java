@@ -7,6 +7,8 @@ package Controlador;
 
 import Vista.*;
 import Model.Operations;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +19,7 @@ public class RegistrarEmpresaControlador {
     private Operations model;
     private static String nombreEmp;
     private static int telefono;
-    private  static String ubicacion;
+    private static String ubicacion;
 
     public static RegistrarEmpresa ventanaEmp = new RegistrarEmpresa();
 
@@ -34,16 +36,24 @@ public class RegistrarEmpresaControlador {
         leerEmpresa();
         Operations.registrarEmpresa(nombreEmp, telefono, ubicacion);
     }
-    public static void botonSalir(){
+
+    public static void botonSalir() {
         ocultarEmp();
         inicioControlador.volverInicio();
     }
 
     public static void leerEmpresa() {
+        int telefono = 0;
         try {
 
             nombreEmp = ventanaEmp.txtNombreEmpres.getText();
-            telefono = Integer.valueOf(ventanaEmp.txtTelefonoEmpresa.getText());
+            if (ventanaEmp.txtTelefonoEmpresa.getText().equals("")) {
+                Component rootPane = null;
+                JOptionPane.showMessageDialog(rootPane, "Tiene que llenar todos los campos");
+            } else {
+                telefono = Integer.parseInt(ventanaEmp.txtTelefonoEmpresa.getText());
+            }
+
             ubicacion = ventanaEmp.txtUbicsacionEmpresa.getText();
 
         } catch (NumberFormatException e) {

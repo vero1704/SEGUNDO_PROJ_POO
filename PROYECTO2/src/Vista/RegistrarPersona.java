@@ -26,9 +26,11 @@ public class RegistrarPersona extends javax.swing.JFrame {
      */
     public RegistrarPersona() {
         initComponents();
+        cargarEmpresa();
         
         
     }
+    
     
 
     /**
@@ -54,6 +56,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
         txtSalario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
+        fiel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(java.awt.Color.white);
@@ -124,6 +127,8 @@ public class RegistrarPersona extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Cédula");
 
+        fiel.setText("jLabel8");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,7 +153,8 @@ public class RegistrarPersona extends javax.swing.JFrame {
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
+                                    .addComponent(jLabel7)
+                                    .addComponent(fiel))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtNombrePersona)
@@ -185,7 +191,9 @@ public class RegistrarPersona extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cmbEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fiel)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalirPer)
                     .addComponent(btnRegistrarPer))
@@ -256,11 +264,29 @@ public class RegistrarPersona extends javax.swing.JFrame {
 
     }
     
+    public void cargarEmpresa() {
+        try {
+            ArrayList<Empresa> usuarios = procesos.mostrarEmpresas();
+            if (usuarios.size() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Debe de registrar primero una empresa");
+            } else {
+                for (Empresa temp : usuarios) {
+                    cmbEmpresa.addItem(temp.getNombreE());
+
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegistrarPer;
     public javax.swing.JButton btnSalirPer;
     public javax.swing.JComboBox<String> cmbEmpresa;
+    private javax.swing.JLabel fiel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

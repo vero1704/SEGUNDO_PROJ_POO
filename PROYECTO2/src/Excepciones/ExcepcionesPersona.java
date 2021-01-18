@@ -1,4 +1,4 @@
-package Controlador;
+package Excepcion;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,14 +6,15 @@ package Controlador;
  * and open the template in the editor.
  */
 
-import Vista.*;
-
-public class main {
+/**
+ *
+ * @author ma210
+ */
+public class ExcepcionesPersona extends Exception{
+    
   
-    public static void main(String[] args) {
-               
-         inicioControlador.mostrar();
-                    
+    public ExcepcionesPersona(String msg) {
+        super(msg);
     }
     
 }

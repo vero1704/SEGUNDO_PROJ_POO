@@ -10,18 +10,22 @@ import Vista.*;
  * @author Veronica Quesada
  */
 public class MenuControlador {
+    
        public static  Menu ventanaMenu  = new Menu();
+       
    
    public static void mostrar (){ventanaMenu.setVisible(true);
    
    }
    public static void ocultar (){ ventanaMenu.setVisible(false);
+   }   
+   
+    public static void RegistrarPerosn(){
+       ocultar();
+       RegistrarPersonaControlador.mostrar();
+       
    }
    
-   
-   
-   
-   
-   
+ 
    
 }

@@ -124,7 +124,8 @@ public class inicio extends javax.swing.JFrame {
 
     private void btnPantallaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPantallaPrincipalActionPerformed
        
-        
+        inicioControlador.LlamarMenu();
+                
         
     }//GEN-LAST:event_btnPantallaPrincipalActionPerformed
 

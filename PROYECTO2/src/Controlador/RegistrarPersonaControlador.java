@@ -4,21 +4,28 @@
  * and open the template in the editor.
  */
 package Controlador;
+import Entidades.Persona;
+import Excepcion.ExcepcionesPersona;
 import Model.Operations;
 import Vista.*;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Veronica Quesada
  */
 public class RegistrarPersonaControlador {
+    
      public static RegistrarPersona ventanaPer  = new RegistrarPersona();
     private static String nombre;
     private static String puesto;
     private static int salario;
     private static int cedula;
     private  static String empresa;
+    
+    
    public static void mostrar (){ventanaPer.setVisible(true);
-       Operations.cargarEmpresa();
+       
    
    }
    public static void ocultarPer (){ ventanaPer.setVisible(false);
@@ -27,33 +34,45 @@ public class RegistrarPersonaControlador {
    
    public static void InicioPersona(){
        mostrar();
-       
-       
    }
+   
    public static void botonGuardaPersona(){
        leerPersona();
        Operations.registrarPersona(nombre, puesto, cedula, salario, empresa);
    }
+   
    public static void botonSalir(){
         ocultarPer();
         inicioControlador.volverInicio();
     }
          
-   
-   
-   
+      
    
     public static void leerPersona() {
-        try {
+        
+         Persona personas = new Persona();
+         int cedula = 0;
+        int salario = 0;
 
-            nombre = ventanaPer.txtNombrePersona.getText();
-            puesto = ventanaPer.txtPuesto.getText();
-            cedula=  Integer.valueOf(ventanaPer.txtCedula.getText());
-            salario = Integer.valueOf(ventanaPer.txtSalario.getText());
-            empresa = (String) ventanaPer.cmbEmpresa.getSelectedItem();
+        nombre = ventanaPer.txtNombrePersona.getText();
+        puesto = ventanaPer.txtPuesto.getText();
+        empresa = (String) ventanaPer.cmbEmpresa.getSelectedItem();
+         Component rootPane = null;
 
-        } catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
+        if (ventanaPer.txtCedula.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Tiene que llenar todos los campos");
+        } else {
+            cedula = Integer.parseInt(ventanaPer.txtCedula.getText());
         }
+
+        if (ventanaPer.txtSalario.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Tiene que llenar todos los campos");
+        } else {
+            salario = Integer.parseInt(ventanaPer.txtSalario.getText());
+        }
+        
+       
+
+      
     }
 }
