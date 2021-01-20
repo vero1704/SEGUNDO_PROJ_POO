@@ -31,7 +31,8 @@ public class Operations extends javax.swing.JFrame {
     private static EditarDpto Dpto;
     private static EditarPersona editP;
     
-    private static Menu menu;
+    public static Menu menu;
+      public static ListaProyectos l;
 
     public static Metodos procesos = new Metodos();
 
@@ -182,6 +183,7 @@ public class Operations extends javax.swing.JFrame {
     
     // THIS METHOD GET THE COMPANY FOR THE MENU WINDOW
     public static void cargarEmpresamenu() {
+        
         Component rootPane = null;
         try {
             ArrayList<Empresa> usuarios = procesos.mostrarEmpresas();
@@ -199,6 +201,7 @@ public class Operations extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
 // THIS METHOD GET THE PEOPLE FOR THE MENU WINDOW
     public static void cargarPersonas() {
         try {
@@ -357,13 +360,23 @@ public class Operations extends javax.swing.JFrame {
     }
     
     
-    
-    
-    
-    
     //IT´S USED IN THE LISTA PROYECTOS WINDOW
     public static void MostrarListaProyectos() {
-            
+               try {
+    
+
+            ArrayList<Proyectos> dptos = procesos.mostrarProyect();
+            DefaultTableModel modelo = (DefaultTableModel) l.jTable1.getModel();
+            modelo.setRowCount(0);
+
+            for (Proyectos temp : dptos) {
+                Object[] fila = {temp.getempresa(),temp.getnombrep()};
+                modelo.addRow(fila);
+            }
+
+        } catch (Exception e) {
+            menu.txtCon.setText("No hay proyectos registrados");
+        }
     }
     public static void MostrarListaPersonas(){
         
