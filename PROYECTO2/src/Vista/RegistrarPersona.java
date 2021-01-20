@@ -9,7 +9,7 @@ import Controlador.RegistrarPersonaControlador;
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
-import Modelo.Metodos;
+import Metodos.Metodos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -26,7 +26,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
      */
     public RegistrarPersona() {
         initComponents();
-        cargarEmpresa();
+        
         
         
     }
@@ -56,7 +56,6 @@ public class RegistrarPersona extends javax.swing.JFrame {
         txtSalario = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
-        fiel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setForeground(java.awt.Color.white);
@@ -88,7 +87,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
 
         btnRegistrarPer.setBackground(new java.awt.Color(102, 153, 255));
         btnRegistrarPer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnRegistrarPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/disquete.png"))); // NOI18N
+        btnRegistrarPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disquete.png"))); // NOI18N
         btnRegistrarPer.setText("Guardar Persona");
         btnRegistrarPer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +97,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
 
         btnSalirPer.setBackground(new java.awt.Color(102, 153, 255));
         btnSalirPer.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnSalirPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/cerrar-sesion.png"))); // NOI18N
+        btnSalirPer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
         btnSalirPer.setText("Salir");
         btnSalirPer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,8 +126,6 @@ public class RegistrarPersona extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Cédula");
 
-        fiel.setText("jLabel8");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,31 +135,32 @@ public class RegistrarPersona extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnRegistrarPer)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalirPer))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)
-                                    .addComponent(fiel))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtNombrePersona)
-                                    .addComponent(txtCedula)
-                                    .addComponent(txtPuesto)
-                                    .addComponent(txtSalario)
-                                    .addComponent(cmbEmpresa, 0, 196, Short.MAX_VALUE))))))
+                            .addComponent(txtNombrePersona)
+                            .addComponent(txtCedula)
+                            .addComponent(txtPuesto)
+                            .addComponent(txtSalario)
+                            .addComponent(cmbEmpresa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(105, Short.MAX_VALUE)
+                        .addComponent(btnRegistrarPer)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalirPer)))
                 .addGap(68, 68, 68))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(116, 116, 116))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +169,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,9 +189,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cmbEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(fiel)
-                .addGap(10, 10, 10)
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalirPer)
                     .addComponent(btnRegistrarPer))
@@ -286,7 +282,6 @@ public class RegistrarPersona extends javax.swing.JFrame {
     public javax.swing.JButton btnRegistrarPer;
     public javax.swing.JButton btnSalirPer;
     public javax.swing.JComboBox<String> cmbEmpresa;
-    private javax.swing.JLabel fiel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

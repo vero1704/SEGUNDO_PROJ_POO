@@ -6,7 +6,7 @@
 package Controlador;
 
 import Vista.*;
-import Model.Operations;
+import Modelo.Operations;
 import java.awt.Component;
 import javax.swing.JOptionPane;
 
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class RegistrarEmpresaControlador {
 
-    private Operations model;
+    
     private static String nombreEmp;
     private static int telefono;
     private static String ubicacion;
@@ -43,7 +43,7 @@ public class RegistrarEmpresaControlador {
     }
 
     public static void leerEmpresa() {
-        int telefono = 0;
+       
         try {
 
             nombreEmp = ventanaEmp.txtNombreEmpres.getText();

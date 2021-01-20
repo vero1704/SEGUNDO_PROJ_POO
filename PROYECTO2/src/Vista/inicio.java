@@ -5,24 +5,23 @@
  */
 package Vista;
 
+import Controlador.InicioReportesControlador;
 import Controlador.RegistrarEmpresaControlador;
 import Controlador.inicioControlador;
 
 /**
  *
- * @author ma210
+ * @author Veronica Quesada
  */
 public class inicio extends javax.swing.JFrame {
 
     /**
-     * Creates new form inicio
+     * Creates new form start
      */
     public inicio() {
         initComponents();
     }
 
-
-  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,27 +32,23 @@ public class inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         btnPantallaPrincipal = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        btnRegistrar = new javax.swing.JButton();
+        btnRegistrar1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnRegistrar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/analitica.png"))); // NOI18N
         jLabel1.setText("Gestión de proyectos");
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/analitica.png"))); // NOI18N
-        jLabel2.setToolTipText("");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Presione el botón para registrar su empresa");
 
         btnPantallaPrincipal.setBackground(new java.awt.Color(102, 153, 255));
         btnPantallaPrincipal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnPantallaPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/editor-grafico (1).png"))); // NOI18N
+        btnPantallaPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editor-grafico (1).png"))); // NOI18N
         btnPantallaPrincipal.setText("Pantalla Principal");
         btnPantallaPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,13 +59,29 @@ public class inicio extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Presione el botón para ir a la pantalla principal");
 
-        btnRegistrar.setBackground(new java.awt.Color(102, 153, 255));
-        btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/editar.png"))); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar1.setBackground(new java.awt.Color(102, 153, 255));
+        btnRegistrar1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRegistrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disquete.png"))); // NOI18N
+        btnRegistrar1.setText("Registrar");
+        btnRegistrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnRegistrar1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Presione el botón para ver los reportes");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Presione el botón para registrar su empresa");
+
+        btnRegistrar2.setBackground(new java.awt.Color(102, 153, 255));
+        btnRegistrar2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnRegistrar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search (1).png"))); // NOI18N
+        btnRegistrar2.setText("Acceder");
+        btnRegistrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar2ActionPerformed(evt);
             }
         });
 
@@ -79,65 +90,78 @@ public class inicio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(btnPantallaPrincipal)
-                            .addGap(82, 82, 82))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnRegistrar)
-                        .addGap(102, 102, 102)))
-                .addGap(87, 87, 87))
+                        .addComponent(btnPantallaPrincipal)
+                        .addGap(203, 203, 203))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(14, 14, 14)))
+                        .addGap(120, 120, 120))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnRegistrar1)
+                        .addGap(222, 222, 222))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnRegistrar2)
+                        .addGap(222, 222, 222))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(153, Short.MAX_VALUE)
+                    .addComponent(jLabel5)
+                    .addGap(110, 110, 110)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPantallaPrincipal)
-                .addGap(18, 18, 18)
+                .addGap(62, 62, 62)
+                .addComponent(btnRegistrar1)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(btnRegistrar)
-                .addGap(26, 26, 26))
+                .addComponent(btnRegistrar2)
+                .addContainerGap(69, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(183, 183, 183)
+                    .addComponent(jLabel5)
+                    .addContainerGap(215, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPantallaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPantallaPrincipalActionPerformed
-       
+
         inicioControlador.LlamarMenu();
-                
-        
+
     }//GEN-LAST:event_btnPantallaPrincipalActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-   
-       inicioControlador.LlamarEmpresa();
+    private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
+        // TODO add your handling code here:
         
-        
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+        RegistrarEmpresaControlador.mostrarEmp();
+    }//GEN-LAST:event_btnRegistrar1ActionPerformed
 
-    
-   
+    private void btnRegistrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar2ActionPerformed
+        // TODO add your handling code here:
+        
+        InicioReportesControlador.mostrarInicioReportes();
+    }//GEN-LAST:event_btnRegistrar2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -164,17 +188,23 @@ public class inicio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
-        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new inicio().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnPantallaPrincipal;
-    public javax.swing.JButton btnRegistrar;
+    public javax.swing.JButton btnRegistrar1;
+    public javax.swing.JButton btnRegistrar2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }

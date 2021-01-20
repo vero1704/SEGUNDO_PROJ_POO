@@ -2,7 +2,7 @@ package Entidades;
 
 
 import Entidades.Proyectos;
-import Excepcion.ExcepcionesPersona;
+import Excepciones.ExcepcionesPersona;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,7 +25,7 @@ public String nombre;
 
     Departamento departamento;
     Proyectos proyectosAsig;
-    Actividades tareasAsig;
+    Tarea tareasAsig;
 
     public Persona(String nombre, int salario, int cedula, String puesto, Empresa empresa) {
         this.nombre = nombre;

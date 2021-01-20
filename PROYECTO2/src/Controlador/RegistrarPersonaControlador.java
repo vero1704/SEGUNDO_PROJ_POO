@@ -4,60 +4,60 @@
  * and open the template in the editor.
  */
 package Controlador;
+
 import Entidades.Persona;
-import Excepcion.ExcepcionesPersona;
-import Model.Operations;
+import Excepciones.ExcepcionesPersona;
+import Modelo.Operations;
 import Vista.*;
 import java.awt.Component;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Veronica Quesada
  */
 public class RegistrarPersonaControlador {
-    
-     public static RegistrarPersona ventanaPer  = new RegistrarPersona();
+
+    public static RegistrarPersona ventanaPer = new RegistrarPersona();
     private static String nombre;
     private static String puesto;
     private static int salario;
     private static int cedula;
-    private  static String empresa;
-    
-    
-   public static void mostrar (){ventanaPer.setVisible(true);
-       
-   
-   }
-   public static void ocultarPer (){ ventanaPer.setVisible(false);
-   }
-   
-   
-   public static void InicioPersona(){
-       mostrar();
-   }
-   
-   public static void botonGuardaPersona(){
-       leerPersona();
-       Operations.registrarPersona(nombre, puesto, cedula, salario, empresa);
-   }
-   
-   public static void botonSalir(){
-        ocultarPer();
-        inicioControlador.volverInicio();
+    private static String empresa;
+
+    public static void mostrar() {
+        ventanaPer.setVisible(true);
+
     }
-         
-      
-   
+
+    public static void ocultarPer() {
+        ventanaPer.setVisible(false);
+    }
+
+    public static void InicioPersona() {
+        mostrar();
+    }
+
+    public static void botonGuardaPersona() {
+        leerPersona();
+        Operations.registrarPersona(nombre, puesto, cedula, salario, empresa);
+    }
+
+    public static void botonSalir() {
+        ocultarPer();
+        MenuControlador.volverMenu();
+    }
+
     public static void leerPersona() {
-        
-         Persona personas = new Persona();
-         int cedula = 0;
+
+        Persona personas = new Persona();
+        int cedula = 0;
         int salario = 0;
 
         nombre = ventanaPer.txtNombrePersona.getText();
         puesto = ventanaPer.txtPuesto.getText();
         empresa = (String) ventanaPer.cmbEmpresa.getSelectedItem();
-         Component rootPane = null;
+        Component rootPane = null;
 
         if (ventanaPer.txtCedula.getText().equals("")) {
             JOptionPane.showMessageDialog(rootPane, "Tiene que llenar todos los campos");
@@ -70,9 +70,6 @@ public class RegistrarPersonaControlador {
         } else {
             salario = Integer.parseInt(ventanaPer.txtSalario.getText());
         }
-        
-       
 
-      
     }
 }

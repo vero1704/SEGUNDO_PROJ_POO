@@ -22,7 +22,14 @@ public class EditDptoControlador {
    
    
    
-   
+    public static void BuscarDptos(){
+        
+        
+        
+        
+        
+        
+    }
    public static void leerEdit(){
        
        

@@ -1,6 +1,6 @@
 package Entidades;
 
-import Excepcion.ExcepcionesEmpresa;
+import Excepciones.ExcepcionesEmpresa;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

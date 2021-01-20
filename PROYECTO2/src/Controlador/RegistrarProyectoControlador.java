@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Modelo.Operations;
 import Vista.*;
 
 /**
@@ -14,6 +15,7 @@ import Vista.*;
 public class RegistrarProyectoControlador {
 
     public static RegistrarProyecto ventanaPro = new RegistrarProyecto();
+    private static int id=0 ;
     private static String empresa;
     private static String nombreP;
     private static String EncPro;
@@ -33,12 +35,25 @@ public class RegistrarProyectoControlador {
 
     public static void botonGuardarProy() {
         leerProyecto();
+        Operations.registarProyecto(id, empresa, nombreP, EncarTarea, Tareas, EncarTarea, fecha);
         
     }
 
     public static void botonSalir() {
+        ocultar();
+        MenuControlador.volverMenu();
         
         
+    }
+    
+    
+    
+    public static void botonTareas(){
+        
+    }
+    
+    
+    public static void botonRecursos(){
         
     }
 
@@ -51,6 +66,7 @@ public class RegistrarProyectoControlador {
             EncarTarea = (String) ventanaPro.cmbPersona2.getSelectedItem();
             fecha = ventanaPro.jTextFieldFecha.getText();
             Recurso = (String) ventanaPro.cmbRecursos.getSelectedItem();
+            id = id++;
 
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());

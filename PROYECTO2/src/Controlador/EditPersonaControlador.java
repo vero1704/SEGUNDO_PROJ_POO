@@ -5,9 +5,9 @@
  */
 package Controlador;
 
-import Model.Operations;
+import Modelo.Operations;
 import Vista.*;
-import Model.Operations;
+import Modelo.Operations;
 /**
  *
  * @author Veronica Quesada
@@ -25,23 +25,26 @@ public class EditPersonaControlador {
     private static int cedula;
     private static String empresa;
 
-    public static void mostrar() {
+    public static void mostrarEditar() {
         ventanaEditPer.setVisible(true);
 
     }
 
-    public static void ocultar() {
+    public static void ocultarEditar() {
         ventanaEditPer.setVisible(false);
     }
 
     
     public static void botonGuardar(){
         leerEdit();
-        
-       
-        
+       Operations.actualizarPersona(nombre, salario, cedula, puesto, empresa);
         
         
+    }
+    public static void botonSalir(){
+         ocultarEditar();
+         MenuControlador.volverMenu();
+         
     }
     
     

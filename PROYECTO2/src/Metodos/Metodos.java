@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Metodos;
 
 import Datos.Dato;
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
 import Entidades.Proyectos;
+import Entidades.Recursos;
+import Entidades.Tarea;
 import java.util.ArrayList;
 
 /**
@@ -26,10 +28,22 @@ public class Metodos {
 
     }
 
-    public ArrayList<Empresa> mostrarEmpresas() {
-        return udatos.mostrarEmpresa();
+    public static ArrayList<Empresa> mostrarEmpresas() {
+        return Dato.mostrarEmpresa();
+    }
+public static void guardarTareas(Tarea tareas) {
+
+        Dato.insertarTarea(tareas);
+
     }
 
+public static void guardarRecursos(Recursos recursos){
+    Dato.insertarRecurso(recursos);
+}
+
+ public static ArrayList<Tarea> mostrarTareas() {
+        return Dato.mostrarTareas();
+    }
     public void guardarDepto(Departamento dpto) {
         udatos.insertarDpto(dpto);
 

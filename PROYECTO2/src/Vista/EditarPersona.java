@@ -5,10 +5,11 @@
  */
 package Vista;
 
+import Controlador.EditPersonaControlador;
 import Entidades.Departamento;
 import Entidades.Empresa;
 import Entidades.Persona;
-import Modelo.Metodos;
+import Metodos.Metodos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -25,8 +26,7 @@ public class EditarPersona extends javax.swing.JFrame {
      */
     public EditarPersona() {
         initComponents();
-        cargarEmpresa();
-        cargarCedulas();
+        
     }
 
     /**
@@ -182,11 +182,11 @@ public class EditarPersona extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-       actualizarPersona();
+       EditPersonaControlador.botonGuardar();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        
+        EditPersonaControlador.botonSalir();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuestoActionPerformed
@@ -194,55 +194,7 @@ public class EditarPersona extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPuestoActionPerformed
 
     
-    public void cargarEmpresa() {
-        try {
-            ArrayList<Empresa> usuarios = procesos.mostrarEmpresas();
-            if (usuarios.size() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Debe de registrar primero a una familia");
-            } else {
-                for (Empresa temp : usuarios) {
-                    cmbEmpresa.addItem(temp.getNombreE());
-
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void cargarCedulas() {
-        try {
-            ArrayList<Persona> usuarios = procesos.mostrarCedulas();
-            if (usuarios.size() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Debe de registrar primero una persona");
-            } else {
-                for (Persona temp : usuarios) {
-                    String cedulas = String.valueOf(temp.getCedula());
-                    cmbCedulas.addItem(cedulas);
-
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void actualizarPersona() {
-
-        String nombre = txtNombrePersona.getText();
-        String puesto = txtPuesto.getText();
-        int cedula = Integer.parseInt((String) cmbCedulas.getSelectedItem());
-        int salario = Integer.parseInt(txtSalario.getText());
-        String empresa = (String) cmbEmpresa.getSelectedItem();
-
-        Empresa empresas = new Empresa(empresa);
-
-        Persona personas = new Persona(nombre, salario, cedula, puesto, empresas);
-        procesos.editarPersonas(personas);
-
-    }
+  
 
     /**
      * @param args the command line arguments

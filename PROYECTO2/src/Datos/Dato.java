@@ -11,6 +11,7 @@ import Entidades.Empresa;
 import Entidades.Persona;
 import Entidades.Proyectos;
 import Entidades.Recursos;
+import Entidades.Tarea;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,7 +52,7 @@ public class Dato {
         }
     }
 
-    public ArrayList<Empresa> mostrarEmpresa() {
+    public static ArrayList<Empresa> mostrarEmpresa() {
 
         ArrayList<Empresa> empresas = new ArrayList<>();
 
@@ -71,6 +72,27 @@ public class Dato {
             throw new RuntimeException("No se pudo establecer la conexión");
         }
         return empresas;
+    }
+    public static ArrayList<Tarea> mostrarTareas() {
+
+        ArrayList<Tarea> tareas = new ArrayList<>();
+
+        try (Connection connection = Conexion.getConexion()) {
+            String sql = "select nombreempresa from empresa";
+
+            Statement s = connection.createStatement();
+            ResultSet rs = s.executeQuery(sql);
+
+            while (rs.next()) {
+                Tarea customer = new Tarea();
+                customer.setDescripcion(rs.getString("nombreempresa"));
+                tareas.add(customer);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("No se pudo establecer la conexión");
+        }
+        return tareas;
     }
 
     public void insertarDpto(Departamento dpto) {
@@ -489,9 +511,59 @@ public class Dato {
 
         return proyect;
     }
+public static void insertarTarea(Tarea tareas){
+        try (Connection connection = Conexion.getConexion()) {
+            String sql = "INSERT INTO public.tareas(	id, descripcion, encargados, cantper, semanas, horareq, horasdia)	VALUES (?, ?, ?, ?, ?, ?, ?);";
+
+            PreparedStatement p = connection.prepareStatement(sql);
+            p.setInt(1, tareas.getId());
+            p.setString(2, tareas.getdescripcion());
+            p.setString(3, tareas.getencargados());
+            p.setInt(4, tareas.getcantper());
+            p.setInt(5, tareas.getsemanas());
+            p.setInt(6, tareas.gethorareq());
+            p.setInt(7, tareas.gethorasdia());
+
+            int res = p.executeUpdate();
+
+            if (res == 1) {
+                JOptionPane.showMessageDialog(null, "Se ha registrado "
+                        + "satisfactoriamente!", "INFORMACION",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Lo sentimos, registro fallido",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("No se pudo establecer la conexión");
+        }
+    }
+
+    public static void insertarRecurso(Recursos recursos){
+        try (Connection connection = Conexion.getConexion()) {
+            String sql = "INSERT INTO public.recursos(	nombrerec, costo)	VALUES (?);";
+
+            PreparedStatement p = connection.prepareStatement(sql);
+            p.setString(1, recursos.getnombreRec());
+            p.setInt(0, recursos.getCosto());
 
 
-    
+            int res = p.executeUpdate();
+
+            if (res == 1) {
+                JOptionPane.showMessageDialog(null, "Se ha registrado "
+                        + "satisfactoriamente!", "INFORMACION",
+                        JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Lo sentimos, registro fallido",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("No se pudo establecer la conexión");
+        }
+    }
     
     
     

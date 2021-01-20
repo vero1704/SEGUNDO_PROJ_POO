@@ -5,7 +5,7 @@
  */
 package Controlador;
 import Vista.*;
-import Model.Operations;
+import Modelo.Operations;
 
 /**
  *
@@ -21,7 +21,7 @@ public class inicioControlador {
    }
    public static void ocultar (){ ventana.setVisible(false);
    }
-   
+      
    public static void LlamarEmpresa(){
        ocultar();
        RegistrarEmpresaControlador.mostrarEmp();
@@ -30,9 +30,18 @@ public class inicioControlador {
    
      public static void LlamarMenu(){
        ocultar();
-       MenuControlador.mostrar();
+       MenuControlador.volverMenu();
+       Operations.cargarEmpresamenu();
        
    }
+     
+     public static void LlamarReportes(){
+         ocultar();
+         InicioReportesControlador.mostrarInicioReportes();
+     }
+     
+     
+     
    
    public static void volverInicio(){
        mostrar();

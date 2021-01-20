@@ -7,7 +7,8 @@ package Vista;
 
 import Controlador.RegistrarEmpresaControlador;
 import Entidades.Empresa;
-import Modelo.Metodos;
+
+import Metodos.Metodos;
 
 
 /**
@@ -94,7 +95,7 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
 
         btnRegistrarEmp.setBackground(new java.awt.Color(102, 153, 255));
         btnRegistrarEmp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnRegistrarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/disquete.png"))); // NOI18N
+        btnRegistrarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/disquete.png"))); // NOI18N
         btnRegistrarEmp.setText("Guardar Empresa");
         btnRegistrarEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +105,7 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
 
         btnSalirEmp.setBackground(new java.awt.Color(102, 153, 255));
         btnSalirEmp.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnSalirEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mvc/imagenes/cerrar-sesion.png"))); // NOI18N
+        btnSalirEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
         btnSalirEmp.setText("Salir");
         btnSalirEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +169,7 @@ public class RegistrarEmpresa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrarEmp)
                     .addComponent(btnSalirEmp))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();

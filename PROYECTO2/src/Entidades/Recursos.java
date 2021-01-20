@@ -11,14 +11,30 @@ package Entidades;
  * @author Veronica Quesada
  */
 public class Recursos {
-    String nombreRec;
+    public String nombreRec;
+    public int costo;
 
-    public String getNombreRec() {
+    public Recursos() {
+    }
+
+    
+    
+    
+    public Recursos( int costo,String nombreRec) {
+        this.nombreRec = nombreRec;
+        this.costo = costo;
+    }
+
+    public String getnombreRec() {
         return nombreRec;
     }
 
-    public void setNombreRec(String nombreRec) {
-        this.nombreRec = nombreRec;
+    public int getCosto() {
+        return costo;
     }
+
+   
+    
+
     
 }

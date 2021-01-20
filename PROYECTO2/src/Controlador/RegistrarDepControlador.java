@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Controlador;
-import Model.Operations;
+import Modelo.Operations;
 import Vista.*;
 /**
  *
@@ -34,7 +34,7 @@ public class RegistrarDepControlador {
    }
    public static void botonSalir(){
         ocultarDpto();
-        inicioControlador.volverInicio();
+        MenuControlador.volverMenu();
     }
    
    
